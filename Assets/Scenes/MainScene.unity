@@ -787,7 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   currentDay: 1
-  dayDuration: 20
+  dayDuration: 360
   timeText: {fileID: 1748029677}
   dayText: {fileID: 1784746081}
   isPaused: 0
