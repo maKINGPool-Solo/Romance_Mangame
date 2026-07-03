@@ -49,6 +49,8 @@ public class TimeManager : MonoBehaviour
 
             if (currentDay > 3)
             {
+                timeText.gameObject.SetActive(false);
+                dayText.gameObject.SetActive(false);
                 OnGameEnd?.Invoke();
             }
             else

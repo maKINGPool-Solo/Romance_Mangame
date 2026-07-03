@@ -14,16 +14,23 @@ public class FadeManager : MonoBehaviour
     void OnEnable()
     {
         TimeManager.OnDayChanged += HandleDayChanged;
+        TimeManager.OnGameEnd += HandleGameEnd;
     }
 
     void OnDisable()
     {
         TimeManager.OnDayChanged -= HandleDayChanged;
+        TimeManager.OnGameEnd -= HandleGameEnd;
     }
 
     void HandleDayChanged()
     {
         StartCoroutine(FadeRoutine());
+    }
+
+    void HandleGameEnd()
+    {
+        StartCoroutine(GameEndRoutine());
     }
 
     IEnumerator FadeRoutine()
@@ -70,6 +77,16 @@ public class FadeManager : MonoBehaviour
         }
 
         dayAnnounceText.color = new Color(c.r, c.g, c.b, to);
+    }
+
+    IEnumerator GameEndRoutine()
+    {
+        fadeImage.raycastTarget = true;
+        yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration)); // 어두워지기만
+
+        Destroy(TimeManager.Instance.gameObject);
+        //SceneManager.LoadScene("EndingScene"); // 나중에 이름 채우기
+        Destroy(gameObject); // TimeUI_Canvas(FadeManager 포함) 자체도 파괴 -> 엔딩씬에서 흰 화면에서 시작하면서 페이드 아웃 되는 걸 기본으로 설정해두기...
     }
 
 }
