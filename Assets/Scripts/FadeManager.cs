@@ -1,0 +1,75 @@
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections;
+
+public class FadeManager : MonoBehaviour
+{
+    public Image fadeImage;
+    public TextMeshProUGUI dayAnnounceText;
+    public float fadeDuration = 1f;
+    public float textFadeDuration = 0.3f;
+    public float textHoldDuration = 0.7f;
+
+    void OnEnable()
+    {
+        TimeManager.OnDayChanged += HandleDayChanged;
+    }
+
+    void OnDisable()
+    {
+        TimeManager.OnDayChanged -= HandleDayChanged;
+    }
+
+    void HandleDayChanged()
+    {
+        StartCoroutine(FadeRoutine());
+    }
+
+    IEnumerator FadeRoutine()
+    {
+        fadeImage.raycastTarget = true;
+
+        yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration));
+        dayAnnounceText.text = "Day " + TimeManager.Instance.currentDay;
+        yield return StartCoroutine(FadeText(0f, 1f));
+        yield return new WaitForSeconds(textHoldDuration);
+        yield return StartCoroutine(FadeText(1f, 0f));
+        yield return StartCoroutine(Fade(fadeImage, 1f, 0f, fadeDuration));
+
+        fadeImage.raycastTarget = false;
+    }
+
+    IEnumerator Fade(Image image, float from, float to, float duration)
+    {
+        float timer = 0f;
+        Color c = image.color;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float alpha = Mathf.Lerp(from, to, timer / duration);
+            image.color = new Color(c.r, c.g, c.b, alpha);
+            yield return null;
+        }
+
+        image.color = new Color(c.r, c.g, c.b, to);
+    }
+
+    IEnumerator FadeText(float from, float to)
+    {
+        float timer = 0f;
+        Color c = dayAnnounceText.color;
+
+        while (timer < textFadeDuration)
+        {
+            timer += Time.deltaTime;
+            float alpha = Mathf.Lerp(from, to, timer / textFadeDuration);
+            dayAnnounceText.color = new Color(c.r, c.g, c.b, alpha);
+            yield return null;
+        }
+
+        dayAnnounceText.color = new Color(c.r, c.g, c.b, to);
+    }
+
+}

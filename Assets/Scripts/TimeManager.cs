@@ -5,6 +5,9 @@ using TMPro;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance;
+    public static event System.Action OnDayChanged;
+    public static event System.Action OnGameEnd;
+
     public int currentDay = 1;
     
     [SerializeField]
@@ -14,6 +17,8 @@ public class TimeManager : MonoBehaviour
 
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI dayText;
+
+    public bool isPaused = false;
 
     void Awake()
     {
@@ -30,6 +35,11 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
+        if (isPaused)
+        {
+            return;
+        }
+
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime >= dayDuration)
@@ -37,10 +47,13 @@ public class TimeManager : MonoBehaviour
             elapsedTime = 0f;
             currentDay++;
 
-            if(currentDay > 3)
+            if (currentDay > 3)
             {
-                Debug.Log("Ending");
-                //SceneManager.LoadScene("");
+                OnGameEnd?.Invoke();
+            }
+            else
+            {
+                OnDayChanged?.Invoke();
             }
         }
 
