@@ -51,28 +51,11 @@ public class Dial_Manager : MonoBehaviour
     public Dial current_dial;
     int dial_id;
 
-    public static Dial_Manager instance = null;
-
-    public SceneUI_Manager SceneUI { get; private set; }
-
-    void Awake()
-    {
-        if (null == instance)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    public SceneUI_Manager SceneUI;
 
     void Start()
     {
-        GameState st = new GameState();
-        st.char_id = 0;
-        st.date = 0;
+        //InitDial(new GameState(DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay));
         InitDial(new GameState(0, 0));
     }
 
@@ -103,13 +86,4 @@ public class Dial_Manager : MonoBehaviour
         //Like_Manager.instance.SetLike(0, 10);
     }
 
-    public void RegisterSceneUI(SceneUI_Manager uiManager)
-    {
-        SceneUI = uiManager;
-    }
-
-    public void UnregisterSceneUI()
-    {
-        SceneUI = null;
-    }
 }

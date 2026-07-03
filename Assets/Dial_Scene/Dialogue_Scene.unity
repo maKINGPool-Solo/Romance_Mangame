@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1eddceafbb495747ac0168defb4f265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Like_Manager
+  SceneUI: {fileID: 0}
   likes:
   - name: Hanna
     like: 0
@@ -389,6 +390,7 @@ MonoBehaviour:
   text_what: {fileID: 476680310}
   panel_button: {fileID: 275135053}
   slider_like: {fileID: 4390717340088013811}
+  dm: {fileID: 1895895678}
 --- !u!4 &1061581975
 Transform:
   m_ObjectHideFlags: 0
@@ -467,6 +469,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   current_dial: {fileID: 0}
+  SceneUI: {fileID: 1061581974}
 --- !u!4 &1895895679
 Transform:
   m_ObjectHideFlags: 0

@@ -11,25 +11,24 @@ public struct CharLike
 }
 public class Like_Manager : MonoBehaviour
 {
-    public static Like_Manager instance = null;
-    public SceneUI_Manager SceneUI { get; private set; }
-
-    //public Slider slider_like;
+    public SceneUI_Manager SceneUI;
 
     [SerializeField]
     private CharLike[] likes;
 
+    public static Like_Manager instance;
+
     void Awake()
     {
-        if (null == instance)
+        if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
             Init();
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
