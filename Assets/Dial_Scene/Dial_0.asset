@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dial
   dials:
   - talker: 0
-    text: Hi
+    face: 0
+    text: "\uC548\uB155"
   - talker: 1
-    text: nice to meet you
+    face: 1
+    text: "\uB9CC\uB098\uC11C \uBC18\uAC00\uC6CC"
   - talker: 0
-    text: me too
+    face: 1
+    text: "\uB098\uB3C4"
   - talker: 1
-    text: bye
+    face: 2
+    text: "\uC798\uAC00"
   - talker: 0
-    text: bye
+    face: 2
+    text: "\uC798\uAC00"

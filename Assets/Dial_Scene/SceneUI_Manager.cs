@@ -7,6 +7,8 @@ public class SceneUI_Manager : MonoBehaviour
     public TextMeshProUGUI text_name;
     public TextMeshProUGUI text_what;
     public GameObject panel_button;
+    public SpriteRenderer face;
+    public SpriteRenderer back;
     public Slider slider_like;
 
     public Dial_Manager dm;
@@ -29,10 +31,16 @@ public class SceneUI_Manager : MonoBehaviour
         }
     }
 
-    public void MakeText(string name, string text)
+    public void MakeText(string name, string text, Sprite face)
     {
         text_name.text = name;
         text_what.text = text;
+        this.face.sprite = face;
+    }
+
+    public void MakeBack(Sprite back)
+    {
+        this.back.sprite = back;
     }
 
     public void ShowSlider(float value)
