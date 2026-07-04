@@ -261,10 +261,8 @@ public class Dial_Manager : MonoBehaviour
         InitReaction();
     }
 
-    IEnumerator FadeIn()
+    void GotoMinigame()
     {
-        yield return new WaitForSeconds(1.0f);
-
         if (isGood)
         {
             SceneManager.LoadScene("EasyMiniGame");
@@ -273,13 +271,6 @@ public class Dial_Manager : MonoBehaviour
         {
             SceneManager.LoadScene("HardMiniGame");
         }
-    }
-
-    void GotoMinigame()
-    {
-        if (SceneUI != null) SceneUI.FadeIn();
-
-        StartCoroutine(FadeIn());
     }
 
     void MakeAfterGame(int id)
