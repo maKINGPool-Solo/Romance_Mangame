@@ -16,6 +16,9 @@ public class FadeManager : MonoBehaviour
     public float textFadeDuration = 0.3f;
     public float textHoldDuration = 0.7f;
 
+    public GameObject timerBackgroundImage;
+    public GameObject dayBackgroundImage;
+
     void Awake()
     {
         if (Instance == null)
@@ -124,6 +127,9 @@ public class FadeManager : MonoBehaviour
 
     IEnumerator GameEndRoutine()
     {
+        timerBackgroundImage.SetActive(false);
+        dayBackgroundImage.SetActive(false);
+
         fadeImage.raycastTarget = true;
         yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration)); 
 
