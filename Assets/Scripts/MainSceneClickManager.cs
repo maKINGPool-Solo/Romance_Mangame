@@ -19,6 +19,8 @@ public class MainSceneClickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MainMonologueManager.IsMonologueActive) return;
+
         HandleHover();
 
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
@@ -82,7 +84,7 @@ public class MainSceneClickManager : MonoBehaviour
         {
             Debug.Log("Clicked: " + character.characterId);
             DialogueData.SelectedCharacterId = character.characterId;
-            SceneManager.LoadScene("Dialogue_Scene");
+            FadeManager.Instance.FadeToScene("Dialogue_Scene", Color.white);
         }
     }
 

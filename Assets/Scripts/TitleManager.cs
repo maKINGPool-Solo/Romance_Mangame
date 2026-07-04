@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    public TitleFadeManager titleFadeManager;
+
     public void StartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        titleFadeManager.FadeToMainScene("MainScene");
     }
 
     public void ExitGame()
