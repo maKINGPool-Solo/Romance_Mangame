@@ -187,8 +187,9 @@ public class GameManager : MonoBehaviour
                 Dial_Manager.instance.isSuccess = false;
             }
 
-            
-            SceneManager.LoadScene("Dialogue_Scene");
+
+            //SceneManager.LoadScene("Dialogue_Scene");
+            FadeManager.Instance.FadeToScene("Dialogue_Scene", Color.white);
         }
     }
 
@@ -196,8 +197,9 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadDialogueSceneAfterDelay(float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene("Dialogue_Scene");
+        Time.timeScale = 1f;
+        //SceneManager.LoadScene("Dialogue_Scene");
+        FadeManager.Instance.FadeToScene("Dialogue_Scene", Color.white);
     }
 
     IEnumerator HeartBreakSequence(Image heartImg)

@@ -2095,6 +2095,8 @@ MonoBehaviour:
   goTextUI: {fileID: 133699816}
   clearSuccessUI: {fileID: 2070343218}
   clearFailUI: {fileID: 948576822}
+  dialogUI1: {fileID: 0}
+  dialogUI2: {fileID: 0}
 --- !u!4 &1913467185
 Transform:
   m_ObjectHideFlags: 0
@@ -2219,8 +2221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97.3, y: -57.6}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchoredPosition: {x: -97.3, y: -55.4}
+  m_SizeDelta: {x: 35, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070343220
 MonoBehaviour:
@@ -2242,7 +2244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4813440202222978690, guid: 0fc57ae3fa5a33746abcdc5385260f04, type: 3}
+  m_Sprite: {fileID: -4409749357362077914, guid: 25e9478cfe498a4438d2c11d4eacf79c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

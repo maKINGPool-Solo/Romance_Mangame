@@ -228,7 +228,8 @@ public class Dial_Manager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainScene");
+            //SceneManager.LoadScene("MainScene");
+            FadeManager.Instance.FadeToScene("MainScene", Color.white);
         }
 
         //Like_Manager.instance.SetLike(0, 10);
@@ -261,25 +262,16 @@ public class Dial_Manager : MonoBehaviour
         InitReaction();
     }
 
-    IEnumerator FadeIn()
+    void GotoMinigame()
     {
-        yield return new WaitForSeconds(1.0f);
-
         if (isGood)
         {
-            SceneManager.LoadScene("EasyMiniGame");
+            FadeManager.Instance.FadeToScene("EasyMiniGame", Color.white);
         }
         else
         {
-            SceneManager.LoadScene("HardMiniGame");
+            FadeManager.Instance.FadeToScene("HardMiniGame", Color.white);
         }
-    }
-
-    void GotoMinigame()
-    {
-        if (SceneUI != null) SceneUI.FadeIn();
-
-        StartCoroutine(FadeIn());
     }
 
     void MakeAfterGame(int id)
