@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     // 🏁 플레이어가 골인 지점에 닿았을 때 체크하는 함수
     public void PlayerReachedGoal()
     {
-        // [조건 성립] 말풍선을 전부 다 먹고 골인했을 때 ➔ 게임 클리어 성공!
+        // [성공] 말풍선을 전부 다 먹고 골인했을 때 ➔ 게임 클리어 성공!
         if (collectedCoins >= totalCoins)
         {
             Debug.Log("🎉 미션 성공!");
@@ -128,11 +128,13 @@ public class GameManager : MonoBehaviour
             }
 
             if (clearSuccessUI != null) StartCoroutine(FadeInCoroutine(clearSuccessUI, 0.5f));
-            Time.timeScale = 0f; 
+            
+            // 🎬 성공 UI를 1.5초간 보여준 뒤 Dialogue_Scene으로 이동
+            StartCoroutine(LoadDialogueSceneAfterDelay(1.5f));
         }
         else
         {
-            // 말풍선이 부족해서 탈출 실패했을 때 (이때는 단순 리셋이므로 false를 보내지 않습니다)
+            // 말풍선이 부족해서 탈출 실패했을 때 (단순 제자리 리셋)
             Debug.Log("❌ 탈출 실패! 말풍선이 부족합니다.");
             StartCoroutine(ClearFailSequence());
         }
@@ -176,17 +178,26 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // [조건 성립] 목숨을 모두 잃어 완전히 게임 오버 되었을 때 ➔ 클리어 실패!
+            // [실패] 목숨을 모두 잃어 완전히 게임 오버 되었을 때 ➔ 클리어 실패
             Debug.Log("💀 게임 오버! 완전히 실패했습니다.");
 
-            // 실패 신호 보내기
+            
             if (Dial_Manager.instance != null)
             {
                 Dial_Manager.instance.isSuccess = false;
             }
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+            SceneManager.LoadScene("Dialogue_Scene");
         }
+    }
+
+    // ⏳ 성공 UI 연출을 잠시 보여준 뒤 대화 씬으로 넘어가는 코루틴
+    IEnumerator LoadDialogueSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("Dialogue_Scene");
     }
 
     IEnumerator HeartBreakSequence(Image heartImg)
