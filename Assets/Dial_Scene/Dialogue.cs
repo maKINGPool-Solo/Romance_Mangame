@@ -5,7 +5,9 @@ using UnityEngine;
 public class Dialogue
 {
     public int talker;
+    public int listener;
     public int face;
+    [TextArea(1, 3)]
     public string text;
 }
 
@@ -13,11 +15,10 @@ public class Dialogue
 public class Choice
 {
     public string text;
-}
 
-[Serializable]
-public class Reaction
-{
-    public bool isGood;
-    public string text;
+    [SerializeField]
+    public Dialogue[] good;
+
+    [SerializeField]
+    public Dialogue[] bad;
 }

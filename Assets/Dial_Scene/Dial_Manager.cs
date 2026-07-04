@@ -14,11 +14,28 @@ public struct GameState
     public int back_id;
     public int date;
 
-    public GameState(int char_id, int back_id, int date)
+    public GameState(string char_id, string back_id, int date)
     {
-        this.char_id = char_id;
-        this.back_id = back_id;
-        this.date = date;
+        switch (char_id)
+        {
+            case "A":
+                this.char_id = 0;
+                this.back_id = 0;
+                break;
+            case "B":
+                this.char_id = 1;
+                this.back_id = 1;
+                break;
+            case "C":
+                this.char_id= 2;
+                this.back_id= 2;
+                break;
+            default:
+                this.char_id = 0;
+                this.back_id = 0;
+                break;
+        }
+        this.date = date-1;
     }
 }
 
@@ -64,14 +81,24 @@ public class Dial_Manager : MonoBehaviour
     GameState current;
     public Dial current_dial;
     int dial_id;
+    int reaction_id;
+    Dialogue[] current_reaction;
+    bool isGood;
 
     public SceneUI_Manager SceneUI;
 
     void Start()
     {
-        //InitDial(new GameState(DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay));
-        InitDial(new GameState(0, 0, 0));
+        TimeManager.Instance.isPaused = true;
+        InitDial(new GameState(DialogueData.SelectedCharacterId, DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay));
+        //InitDial(new GameState("B", "B", 0));
     }
+
+    private void OnDestroy()
+    {
+        //TimeManager.Instance.isPaused = false;
+    }
+
 
     public void InitDial(GameState g)
     {
@@ -83,20 +110,56 @@ public class Dial_Manager : MonoBehaviour
 
         next.Enable();
         next.performed += ctx=>Next();
+
         if (SceneUI != null) SceneUI.SetPannelButton(false);
+
+        reaction_id = -1;
     }
 
     void MakeText(int id)
     {
         if (current_dial.dials.Length <= id)
         {
+            ShowButtons();
+            return;
+        }
+
+        string name;
+        string text;
+        Sprite face;
+        if (current_dial.dials[id].talker == -1) name = "";
+        else name = char_info[current_reaction[id].talker].name;
+        text = current_dial.dials[id].text;
+        if (current_dial.dials[id].listener == -1) face = null;
+        else face = char_info[current_dial.dials[id].listener].imgs[current_dial.dials[id].face];
+        if(SceneUI!= null) SceneUI.MakeText(name, text, face);
+    }
+
+    public void InitReaction()
+    {
+        reaction_id = 0;
+        MakeReaction(reaction_id);
+
+        if (SceneUI != null) SceneUI.SetPannelButton(false);
+    }
+
+    void MakeReaction(int id)
+    {
+        if (current_reaction.Length <= id)
+        {
             GotoMinigame();
             return;
         }
-        string name = char_info[current_dial.dials[id].talker].name;
-        string text = current_dial.dials[id].text;
-        Sprite face = char_info[current_dial.dials[id].talker].imgs[current_dial.dials[id].face];
-        if(SceneUI!= null) SceneUI.MakeText(name, text, face);
+
+        string name;
+        string text;
+        Sprite face;
+        if (current_reaction[id].talker == -1) name = "";
+        else name = char_info[current_reaction[id].talker].name;
+        text = current_reaction[id].text;
+        if (current_reaction[id].listener == -1) face = null;
+        else face = char_info[current_reaction[id].listener].imgs[current_reaction[id].face];
+        if (SceneUI != null) SceneUI.MakeText(name, text, face);
     }
 
     void MakeBack(int id)
@@ -108,14 +171,56 @@ public class Dial_Manager : MonoBehaviour
 
     void Next()
     {
-        dial_id++;
-        MakeText(dial_id);
+        if(reaction_id == -1)
+        {
+            dial_id++;
+            MakeText(dial_id);
+        }
+        else
+        {
+            reaction_id++;
+            MakeReaction(reaction_id);
+        }
 
         //Like_Manager.instance.SetLike(0, 10);
     }
 
+    void ShowButtons()
+    {
+        string[] texts = new string[current_dial.choices.Length];
+
+        for (int i = 0; i < texts.Length; i++) texts[i] = current_dial.choices[i].text;
+
+        if (SceneUI != null) SceneUI.ShowButtons(texts);
+    }
+
+
+    public void ClickButton(int id)
+    {
+        if (UnityEngine.Random.value <= 0.5f)
+        {
+            isGood = false;
+        }
+        else
+        {
+            isGood = true;
+        }
+
+        if (isGood) current_reaction = current_dial.choices[id].good;
+        else current_reaction = current_dial.choices[id].bad;
+
+        InitReaction();
+    }
+
     void GotoMinigame()
     {
-        SceneManager.LoadScene("EasyMiniGame");
+        if (isGood)
+        {
+            SceneManager.LoadScene("EasyMiniGame");
+        }
+        else
+        {
+            SceneManager.LoadScene("HardMiniGame");
+        }
     }
 }

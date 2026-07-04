@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aedb8eb5027142810577af515b913, type: 3}
+  m_Name: Dial_0 2
+  m_EditorClassIdentifier: Assembly-CSharp::Dial
+  dials:
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\u201C\uD30C\uBC15.\u201D"
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\uC544\uC8FC \uC791\uC740 \uC18C\uB9AC\uC600\uB2E4."
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\uD558\uC9C0\uB9CC \uC774\uC0C1\uD558\uAC8C\uB3C4, \uADF8 \uC21C\uAC04
+      \uC8FC\uBCC0\uC774 \uC870\uC6A9\uD574\uC9C4 \uAC83\uCC98\uB7FC \uB290\uAEF4\uC84C\uB2E4."
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uC2DC\uC120\uC744 \uB3CC\uB9AC\uC790, \uC774\uD55C\uB098\uAC00 \uBB34\uC5B8\uAC00\uB97C
+      \uB5A8\uC5B4\uB728\uB9B0 \uCC44 \uBC14\uB2E5\uC744 \uB354\uB4EC\uACE0 \uC788\uC5C8\uB2E4."
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uB2E4\uAC00\uAC00\uB824\uB358 \uC21C\uAC04\u2014"
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uD22D."
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uC2DC\uC120\uC774 \uB9DE\uBD80\uB52A\uD78C\uB2E4."
+  choices:
+  - text: "\uC8FC\uC6CC\uC900\uB2E4."
+    good:
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"\u2026\uC5B4, \uACE0\uB9C8\uC6CC. \n\uB108, \uC0DD\uAC01\uBCF4\uB2E4
+        \uD6E8\uC52C \uCE5C\uC808\uD558\uB124?\""
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"\uD5E4\uD5E4, \uC0AC\uC2E4 \uC774\uAC70 \uB5A8\uC5B4\uB728\uB824\uC11C
+        \uC5C4\uCCAD \uB2F9\uD669\uD588\uAC70\uB4E0.\n\uB108 \uC544\uB2C8\uC5C8\uC73C\uBA74
+        \uD070\uC77C \uB0A0 \uBED4\uD588\uB2E4!\" "
+    bad:
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\uB204\uAC00 \uC8FC\uC6CC\uB2EC\uB7AC\uC5B4? \n\uB0B4\uAC00 \uC54C\uC544\uC11C
+        \uD560 \uC218 \uC788\uC5B4!\""
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\u2026\uAD1C\uD788 \uC0AC\uB78C \uC5BC\uAD74 \uBE68\uAC1C\uC9C0\uAC8C
+        \uC65C \uADF8\uB807\uAC8C \uBE64\uD788 \uBD10?\n\uC0AC\uB78C \uBB34\uC548\uD558\uAC8C.\""
+  - text: "\uBC14\uB77C\uBCF4\uAE30\uB9CC \uD55C\uB2E4."
+    good:
+    - talker: 0
+      listener: 0
+      face: 2
+      text: " \u2026\" \uC65C \uADF8\uB807\uAC8C \uBD10? \uC0AC\uB78C \uC465\uC2A4\uB7FD\uAC8C.\"
+        (\uC0B4\uC9DD \uC6C3\uC73C\uBA70)"
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"\u2026\uBB50, \uC624\uB298\uC740 \uB124 \uB208\uBE5B\uC774 \uB098\uC058\uC9C0
+        \uC54A\uC73C\uB2C8\uAE4C \uBD10\uC904\uAC8C.\""
+    bad:
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\u2026\uBB50\uC57C, \uADF8 \uB208\uBE5B\uC740? \uB3C4\uC640\uC904
+        \uC0DD\uAC01\uC740 \uC5C6\uACE0 \uAD6C\uACBD\uD558\uB294 \uAC70\uC57C?\""
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\uC9C4\uC9DC \uBABB\uB410\uC5B4, \uB108! \uB10C \uC815\uB9D0 \uB0B4
+        \uCDE8\uD5A5\uC774\uB791 \uC815\uBC18\uB300\uC57C!\""
+  - text: "\"\uBC14\uB2E5\uC5D0 \uBB50 \uB300\uB2E8\uD55C \uAC70\uB77C\uB3C4 \uC788\uC5B4?
+      \uB098 \uB9D0\uACE0.\" (\uD50C\uB7EC\uD305)"
+    good:
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"?? \u314B\u314B\u314B\uBB50\uC57C, \uC9C0\uAE08 \uB098\uD55C\uD14C
+        \uC791\uC5C5 \uAC70\uB294 \uAC70\uC57C?\""
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"\uC5B4\uBA38, \uB108 \uADF8\uB7F0 \uB9D0\uB3C4 \uD560 \uC904 \uC54C\uC544?
+        \u2026\uADC0\uC5FD\uB124~\""
+    bad:
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\u2026\uC6B0\uC640, \uC18C\uB984 \uB3CB\uC544..! \uB108 \uC9C4\uC9DC
+        \uB290\uB07C\uD558\uB2E4!\""
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\uBC29\uAE08 \uADF8 \uB9D0, \uC5B4\uB514\uC11C \uC8FC\uC6CC \uB4E4\uC5C8\uC5B4?
+        \uB2E4\uC2E0 \uD558\uC9C0 \uB9C8, \uC9C4\uC9DC \uC815\uB5A8\uC5B4\uC838!\""

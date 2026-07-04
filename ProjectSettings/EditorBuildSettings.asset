@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Dial_Scene/Dialogue_Scene.unity
     guid: 063e3e0f1fe39cf478367d03ba48f550
+  - enabled: 1
+    path: Assets/Scenes/EasyMiniGame.unity
+    guid: 8c0807875194af04b975091510967dea
+  - enabled: 1
+    path: Assets/Scenes/HardMiniGame.unity
+    guid: 4705762d8c8d8414daacb23e1e217242
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
