@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
     public static TimeManager Instance;
     public static event System.Action OnDayChanged;
     public static event System.Action OnGameEnd;
+    public GameObject timerBackgroundImage;
 
     public int currentDay = 1;
     
@@ -71,6 +72,15 @@ public class TimeManager : MonoBehaviour
         if (timeText != null && dayText != null) {
             timeText.text = $"{minutes:00}:{seconds:00}";
             dayText.text = $"Day {currentDay}";
+        }
+    }
+
+    public void SetTimeUIVisible(bool visible)
+    {
+        timeText.enabled = visible;
+        if (timerBackgroundImage != null)
+        {
+            timerBackgroundImage.SetActive(visible);
         }
     }
 }

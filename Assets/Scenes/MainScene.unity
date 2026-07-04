@@ -1413,6 +1413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c59ad588aa1864a9e5026c78db5474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
+  timerBackgroundImage: {fileID: 826172182}
   currentDay: 1
   dayDuration: 360
   timeText: {fileID: 1748029677}
