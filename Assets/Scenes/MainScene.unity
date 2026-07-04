@@ -575,7 +575,6 @@ GameObject:
   - component: {fileID: 658618196}
   - component: {fileID: 658618195}
   - component: {fileID: 658618199}
-  - component: {fileID: 658618200}
   m_Layer: 5
   m_Name: Time_UI
   m_TagString: Untagged
@@ -698,18 +697,6 @@ MonoBehaviour:
   fadeDuration: 1
   textFadeDuration: 0.3
   textHoldDuration: 0.7
---- !u!114 &658618200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658618193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1a1384403ba6e43a20bd80f9362a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EndingCalculator
 --- !u!1 &714467335
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +764,7 @@ SpriteRenderer:
   m_SortingOrder: -2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.35510862, g: 0.5660378, b: 0.43485388, a: 1}
+  m_Color: {r: 0.28195086, g: 0.4669811, b: 0.2986562, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1843,8 +1830,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 06:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
+  m_sharedMaterial: {fileID: 7181674906712655285, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1953,8 +1940,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Day 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
+  m_sharedMaterial: {fileID: 7181674906712655285, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2142,8 +2129,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Day 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ed648a788cccbb4984dfa36334bd583, type: 2}
+  m_sharedMaterial: {fileID: -4695673557083093432, guid: 2ed648a788cccbb4984dfa36334bd583, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
