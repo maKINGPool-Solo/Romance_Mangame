@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aedb8eb5027142810577af515b913, type: 3}
+  m_Name: Dial_2
+  m_EditorClassIdentifier: Assembly-CSharp::Dial
+  dials:
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uD55C\uB098\uAC00 \uB124 \uCABD\uC73C\uB85C \uC2AC\uCA4D \uB2E4\uAC00\uC628\uB2E4."
+  - talker: 0
+    listener: 0
+    face: 0
+    text: "\"...\uC788\uC796\uC544.\"\n"
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uC7A0\uAE50 \uB738\uC744 \uB4E4\uC774\uB354\uB2C8 \uC791\uC740 \uBAA9\uC18C\uB9AC\uB85C
+      \uB9D0\uD55C\uB2E4."
+  - talker: 0
+    listener: 0
+    face: 0
+    text: "\"...\uC624\uB298\uC740 \uB2E8 \uAC70 \uBA39\uACE0 \uC2F6\uC5B4.\""
+  choices:
+  - text: "\"\uAC19\uC774 \uBA39\uC73C\uB7EC \uAC08\uB798?\""
+    good:
+    - talker: 0
+      listener: 0
+      face: 2
+      text: " (\uB208\uC744 \uBC18\uC9DD\uC774\uBA74\uC11C) \"\uC624 \uB108\uB3C4
+        \uB2E8 \uAC70 \uB561\uACA8?\" "
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"\uADF8\uB798 \uAC19\uC774 \uAC00\uC790\u314E\u314E. \uB300\uC2E0..
+        \uAC08 \uACF3\uC740 \uB0B4\uAC00 \uC815\uD574.\""
+    bad:
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\uD765. \uB108 \uB2E8 \uAC70 \uC2EB\uC5B4\uD558\uB294\uAC70 \uB2E4
+        \uC54C\uAC70\uB4E0?\""
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\uB410\uC5B4. \uB098 \uD63C\uC790 \uAC08\uAC70\uC57C.\""
+  - text: "\"\uB0B4 \uAC70 \uD55C \uC785 \uBA39\uC744\uB798?\""
+    good:
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"...\uD55C \uC785\uB9CC.\""
+    - talker: -1
+      listener: 0
+      face: 2
+      text: "\uBC1B\uC544\uBA39\uACE0\uB294 \uC560\uC368 \uC544\uBB34\uB807\uC9C0
+        \uC54A\uC740 \uCC99\uD55C\uB2E4."
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"...\uC0DD\uAC01\uBCF4\uB2E4 \uB9DB\uC788\uB124.\""
+    bad:
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"....\uB410\uAC70\uB4E0?\" "
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"\uB09C \uB354 \uB9DB\uC788\uB294\uAC70 \uB530\uB85C \uC0AC\uBA39\uC744
+        \uAC70\uC57C.\""
+  - text: "\"\uB2E8 \uAC70 \uB108\uBB34 \uB9CE\uC774 \uBA39\uC73C\uBA74 \uC0B4\uCC10\uB2E4.\""
+    good:
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"\uD558..\uADF8\uAC74 \uB9DE\uB294\uB370\u3160..(\uC544\uC26C\uC6CC\uD558\uBA74\uC11C
+        \uB0B4\uCABD\uC744 \uCCD0\uB2E4\uBCF8\uB2E4)\""
+    - talker: 0
+      listener: 0
+      face: 2
+      text: "\"....\uB531~ \uC624\uB298\uB9CC \uBA39\uB294 \uAC70\uC57C. \uC5B4\uB54C?
+        \uB108\uB3C4 \uAC19\uC774 \uAC00\uC790!\""
+    bad:
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"...\uBC29\uAE08 \uC9C4\uC9DC \uAE30\uBD84 \uB098\uBE74\uC5B4. \""
+    - talker: 0
+      listener: 0
+      face: 1
+      text: "\"...\uC774\uC81C \uB2E8 \uAC70 \uBA39\uC73C\uB7EC \uAC00\uACE0 \uC2F6\uC9C0\uB3C4
+        \uC54A\uC544\uC84C\uC5B4. \uD765.\""

@@ -64,17 +64,20 @@ MonoBehaviour:
       listener: 2
       face: 2
       text: "\"\uC0AC\uC2E4 \uB098\uB3C4 \uB108\uBB34 \uC624\uB798\uB3FC\uC11C \uB108\uD55C\uD14C
-        \uBB3C\uC5B4\uBCF4\uB824\uACE0 \n\uD55C \uAC70\uC600\uC5B4. \uB2E4\uC2DC
-        \uCC28\uADFC\uCC28\uADFC \uC774\uC57C\uAE30\uD574 \uBCFC\uAE4C?\""
+        \uBB3C\uC5B4\uBCF4\uB824\uACE0 \n\uD55C \uAC70\uC600\uC5B4.\""
+    - talker: 2
+      listener: 2
+      face: 2
+      text: "\"\uB2E4\uC2DC \uCC28\uADFC\uCC28\uADFC \uC774\uC57C\uAE30\uD574 \uBCFC\uAE4C?\""
     bad:
     - talker: 2
       listener: 2
-      face: 3
+      face: 1
       text: "\"\uC5D0\uC5D1? \uC9C4\uC9DC \uBAB0\uB77C? \n\uADF8\uB0A0 \uC9C4\uC9DC
         \uC911\uC694\uD55C \uC77C\uC774 \uC788\uC5C8\uB294\uB370\u2026\""
     - talker: 2
       listener: 2
-      face: 3
+      face: 1
       text: "\"\uD558\uAE34, \uB124\uAC00 \uAE30\uC5B5\uD560 \uB9AC\uAC00 \uC5C6\uC9C0.\"
         \n(\uC2E4\uB9DD\uD55C \uB4EF \uACE0\uAC1C\uB97C \uB5A8\uAD70\uB2E4)"
   - text: "\uD654\uC81C\uB97C \uB3CC\uB9B0\uB2E4"

@@ -283,7 +283,7 @@ public class Dial_Manager : MonoBehaviour
     }
 
     void MakeAfterGame(int id)
-    {
+    { 
         string name;
         string text;
         Sprite face;

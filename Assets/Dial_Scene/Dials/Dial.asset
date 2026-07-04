@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aedb8eb5027142810577af515b913, type: 3}
+  m_Name: Dial
+  m_EditorClassIdentifier: Assembly-CSharp::Dial
+  dials:
+  - talker: 0
+    listener: 0
+    face: 0
+    text: 
+  - talker: 0
+    listener: 0
+    face: 0
+    text: 
+  - talker: 0
+    listener: 0
+    face: 0
+    text: 
+  - talker: 0
+    listener: 0
+    face: 0
+    text: 
+  - talker: 0
+    listener: 0
+    face: 0
+    text: 
+  choices:
+  - text: 
+    good:
+    - talker: 0
+      listener: 0
+      face: 0
+      text: 
+    - talker: 0
+      listener: 0
+      face: 0
+      text: 
+    bad:
+    - talker: 0
+      listener: 0
+      face: 0
+      text: 
+    - talker: 0
+      listener: 0
+      face: 0
+      text: 
+  - text: 
+    good: []
+    bad: []
+  - text: 
+    good: []
+    bad: []
