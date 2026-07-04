@@ -87,13 +87,12 @@ public class GameManager : MonoBehaviour
         if (goTextUI != null) StartCoroutine(FadeOutCoroutine(goTextUI, 0.3f, true)); 
     }
 
-    // 💬 말풍선을 먹을 때 호출되는 함수 (몇 번 말풍선인지 ID를 받아옵니다)
+    // 💬 말풍선을 먹을 때 호출되는 함수
     public void CoinCollected(int bubbleID)
     {
         collectedCoins++;
         Debug.Log($"말풍선 {bubbleID}번 획득! ({collectedCoins} / {totalCoins})");
 
-        // 1번(위쪽)을 먹으면 대사창1, 2번(아래쪽)을 먹으면 대사창2를 페이드 연출로 실행
         if (bubbleID == 1) 
         {
             StartCoroutine(ShowDialogSequence(dialogUI1, 2f));
@@ -109,27 +108,32 @@ public class GameManager : MonoBehaviour
     {
         if (dialogObj == null) yield break;
 
-        // 1. 나타나기 (0.3초 동안 페이드 인)
         yield return StartCoroutine(FadeInCoroutine(dialogObj, 0.3f));
-
-        // 2. 2초간 화면에 유지
         yield return new WaitForSeconds(delay);
-
-        // 3. 사라지기 (0.5초 동안 페이드 아웃 후 비활성화)
         yield return StartCoroutine(FadeOutCoroutine(dialogObj, 0.5f, true));
     }
 
+    // 🏁 플레이어가 골인 지점에 닿았을 때 체크하는 함수
     public void PlayerReachedGoal()
     {
+        // [조건 성립] 말풍선을 전부 다 먹고 골인했을 때 ➔ 게임 클리어 성공!
         if (collectedCoins >= totalCoins)
         {
             Debug.Log("🎉 미션 성공!");
+            
+            // 🤝 윤민주 님 대화 매니저 연동: 성공 신호 보내기
+            if (Dial_Manager.instance != null)
+            {
+                Dial_Manager.instance.isSuccess = true;
+            }
+
             if (clearSuccessUI != null) StartCoroutine(FadeInCoroutine(clearSuccessUI, 0.5f));
             Time.timeScale = 0f; 
         }
         else
         {
-            Debug.Log("❌ 탈출 실패!");
+            // 말풍선이 부족해서 탈출 실패했을 때 (이때는 단순 리셋이므로 false를 보내지 않습니다)
+            Debug.Log("❌ 탈출 실패! 말풍선이 부족합니다.");
             StartCoroutine(ClearFailSequence());
         }
     }
@@ -148,6 +152,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(FadeOutCoroutine(clearFailUI, 0.4f, false));
     }
 
+    // 💀 플레이어가 대미지를 입거나 목숨을 잃을 때
     public void PlayerDied()
     {
         if (player == null) return;
@@ -164,13 +169,22 @@ public class GameManager : MonoBehaviour
 
         if (currentHealth > 0)
         {
+            // 아직 목숨이 남아있으면 단순히 시작 위치로 리셋
             Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
             if (playerRb != null) playerRb.linearVelocity = Vector2.zero;
             player.transform.position = playerInitialPosition;
         }
         else
         {
-            Debug.Log("💀 게임 오버! 씬을 재시작합니다.");
+            // [조건 성립] 목숨을 모두 잃어 완전히 게임 오버 되었을 때 ➔ 클리어 실패!
+            Debug.Log("💀 게임 오버! 완전히 실패했습니다.");
+
+            // 실패 신호 보내기
+            if (Dial_Manager.instance != null)
+            {
+                Dial_Manager.instance.isSuccess = false;
+            }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
