@@ -10,6 +10,7 @@ public class SceneUI_Manager : MonoBehaviour
     public SpriteRenderer face;
     public SpriteRenderer back;
     public Slider slider_like;
+    public GameObject black;
 
     public Dial_Manager dm;
 
@@ -79,5 +80,10 @@ public class SceneUI_Manager : MonoBehaviour
     public void SetPannelButton(bool enable)
     {
         panel_button.SetActive(enable);
+    }
+
+    public void FadeIn()
+    {
+        black.SetActive(true);
     }
 }

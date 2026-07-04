@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEditorInternal;
@@ -171,7 +172,7 @@ public class Dial_Manager : MonoBehaviour
         string name;
         string text;
         Sprite face;
-        if (current_dial.dials[id].talker == -1) name = "";
+        if (current_dial.dials[id].talker == -1) name = "나";
         else name = char_info[current_dial.dials[id].talker].name;
         text = current_dial.dials[id].text;
         if (current_dial.dials[id].listener == -1) face = null;
@@ -198,7 +199,7 @@ public class Dial_Manager : MonoBehaviour
         string name;
         string text;
         Sprite face;
-        if (current_reaction[id].talker == -1) name = "";
+        if (current_reaction[id].talker == -1) name = "나";
         else name = char_info[current_reaction[id].talker].name;
         text = current_reaction[id].text;
         if (current_reaction[id].listener == -1) face = null;
@@ -260,8 +261,10 @@ public class Dial_Manager : MonoBehaviour
         InitReaction();
     }
 
-    void GotoMinigame()
+    IEnumerator FadeIn()
     {
+        yield return new WaitForSeconds(1.0f);
+
         if (isGood)
         {
             SceneManager.LoadScene("EasyMiniGame");
@@ -270,6 +273,13 @@ public class Dial_Manager : MonoBehaviour
         {
             SceneManager.LoadScene("HardMiniGame");
         }
+    }
+
+    void GotoMinigame()
+    {
+        if (SceneUI != null) SceneUI.FadeIn();
+
+        StartCoroutine(FadeIn());
     }
 
     void MakeAfterGame(int id)
