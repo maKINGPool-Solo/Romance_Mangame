@@ -19,6 +19,8 @@ public class MainSceneClickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MainMonologueManager.IsMonologueActive) return;
+
         HandleHover();
 
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)

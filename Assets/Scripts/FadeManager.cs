@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class FadeManager : MonoBehaviour
 {
     public static FadeManager Instance;
-    
+
+    public static event System.Action OnScreenDarkened;
+
     public Image fadeImage;
     public TextMeshProUGUI dayAnnounceText;
     public float fadeDuration = 1f;
@@ -77,6 +79,8 @@ public class FadeManager : MonoBehaviour
         fadeImage.raycastTarget = true;
 
         yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration));
+
+        OnScreenDarkened?.Invoke();
         dayAnnounceText.text = "Day " + TimeManager.Instance.currentDay;
         yield return StartCoroutine(FadeText(0f, 1f));
         yield return new WaitForSeconds(textHoldDuration);

@@ -6,6 +6,7 @@ public class MainMonologueManager : MonoBehaviour
 {
     public GameObject monologuePanel;
     public TextMeshProUGUI monologueText;
+    public static bool IsMonologueActive = false;
 
     [TextArea]
     public string[] lines;
@@ -18,7 +19,7 @@ public class MainMonologueManager : MonoBehaviour
         currentIndex = 0;
         monologuePanel.SetActive(true);
         monologueText.text = lines[currentIndex];
-
+        IsMonologueActive = true;
 
     }
 
@@ -48,5 +49,6 @@ public class MainMonologueManager : MonoBehaviour
     {
         monologuePanel.SetActive(false);
         TimeManager.Instance.isPaused = false;
+        IsMonologueActive = false;
     }
 }
