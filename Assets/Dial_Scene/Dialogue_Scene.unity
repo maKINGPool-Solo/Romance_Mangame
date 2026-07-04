@@ -983,6 +983,26 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: targetScenes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: 'targetScenes.Array.data[0]'
+      value: Dialogue_Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: 'targetScenes.Array.data[1]'
+      value: EasyMiniGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: 'targetScenes.Array.data[2]'
+      value: HardMiniGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
       propertyPath: back_info.Array.data[0].img
       value: 
       objectReference: {fileID: -2564619566193218763, guid: b1c1ce9cb291a4a43993a84b28d41e99, type: 3}
@@ -1017,6 +1037,31 @@ PrefabInstance:
     - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
       propertyPath: char_info.Array.data[2].name
       value: "\uBC30\uC5F0\uC544"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.data[0].face
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.data[0].text
+      value: "\u201C\uB108\uAC00 \uCD5C\uACE0\uC57C~\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.data[1].face
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.data[1].text
+      value: "\u201C\uC544 \uADF8\uB798 \uBB50 \uADF8\uB7F4 \uC218 \uC788\uC9C0~\uC6B0\uB9AC
+        \uB2E4\uC2DC \uC798\uD574\uBCF4\uC790.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.data[2].face
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
+      propertyPath: after_game.Array.data[2].text
+      value: "\u201C\uBCF4\uAE30 \uC2EB\uC73C\uB2C8\uAE4C \uAC00\uBC84\uB824\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
       propertyPath: char_info.Array.data[0].imgs.Array.size

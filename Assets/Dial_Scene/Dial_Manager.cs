@@ -72,7 +72,14 @@ public class Dial_Manager : MonoBehaviour
     [SerializeField]
     public BackInfo[] back_info;
 
+    [SerializeField] 
+    private string[] targetScenes;
+
+    [SerializeField]
+    public Dialogue[] after_game;
+
     public InputAction next;
+    public static Dial_Manager instance;
 
     //public TextMeshProUGUI text_name;
     //public TextMeshProUGUI text_what;
@@ -83,30 +90,61 @@ public class Dial_Manager : MonoBehaviour
     int dial_id;
     int reaction_id;
     Dialogue[] current_reaction;
-    bool isGood;
+
+    public bool isGood;
+    public bool isSuccess;
+    bool isPlayed;
 
     public SceneUI_Manager SceneUI;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
         TimeManager.Instance.isPaused = true;
-        InitDial(new GameState(DialogueData.SelectedCharacterId, DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay));
+
+        current = new GameState(DialogueData.SelectedCharacterId, DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay);
+        isPlayed = false;
+        //isPlayed = true;
+
+        if (!isPlayed) InitDial();
+        else AfterMinigame();
         //InitDial(new GameState("B", "B", 0));
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnDestroy()
     {
-        //TimeManager.Instance.isPaused = false;
+        TimeManager.Instance.isPaused = false;
     }
 
 
-    public void InitDial(GameState g)
+    public void InitDial()
     {
-        current = g;
-        current_dial = dial_info[g.char_id].dial_info[g.date];
+        current_dial = dial_info[current.char_id].dial_info[current.date];
         dial_id = 0;
         MakeText(0);
-        MakeBack(g.back_id);
+        MakeBack(current.back_id);
 
         next.Enable();
         next.performed += ctx=>Next();
@@ -176,10 +214,14 @@ public class Dial_Manager : MonoBehaviour
             dial_id++;
             MakeText(dial_id);
         }
-        else
+        else if(!isPlayed)
         {
             reaction_id++;
             MakeReaction(reaction_id);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainScene");
         }
 
         //Like_Manager.instance.SetLike(0, 10);
@@ -221,6 +263,63 @@ public class Dial_Manager : MonoBehaviour
         else
         {
             SceneManager.LoadScene("HardMiniGame");
+        }
+    }
+
+    void MakeAfterGame(int id)
+    {
+        string name;
+        string text;
+        Sprite face;
+        name = char_info[current.char_id].name;
+        text = after_game[id].text;
+        face = char_info[current.char_id].imgs[after_game[id].face];
+        if (SceneUI != null) SceneUI.MakeText(name, text, face);
+    }
+
+    void AfterMinigame()
+    {
+        if (isSuccess)
+        {
+            if (isGood)
+            {
+                MakeAfterGame(0);
+                Like_Manager.instance.SetLike(current.char_id, 10);
+            }
+            else
+            {
+                MakeAfterGame(1);
+                Like_Manager.instance.SetLike(current.char_id, 20);
+            }
+        }
+        else
+        {
+            MakeAfterGame(2);
+            Like_Manager.instance.SetLike(current.char_id, -10);
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        bool shouldKeep = false;
+        foreach (string sceneName in targetScenes)
+        {
+            if (scene.name == sceneName)
+            {
+                if (scene.name == "Dialogue_Scene")
+                {
+                    AfterMinigame();
+                    TimeManager.Instance.isPaused = true;
+                }
+                else TimeManager.Instance.isPaused = false;
+                shouldKeep = true;
+                break;
+            }
+        }
+
+        if (!shouldKeep)
+        {
+            Destroy(gameObject);
         }
     }
 }
