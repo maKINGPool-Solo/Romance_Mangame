@@ -121,10 +121,13 @@ public class FadeManager : MonoBehaviour
     IEnumerator GameEndRoutine()
     {
         fadeImage.raycastTarget = true;
-        yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration)); // 어두워지기만
+        yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration)); 
 
         Destroy(TimeManager.Instance.gameObject);
-        //SceneManager.LoadScene("EndingScene"); // 나중에 이름 채우기
+        SceneManager.LoadScene("EndingScene");
+
+        yield return null;
+
         Destroy(gameObject); // TimeUI_Canvas(FadeManager 포함) 자체도 파괴 -> 엔딩씬에서 흰 화면에서 시작하면서 페이드 아웃 되는 걸 기본으로 설정해두기...
     }
 
