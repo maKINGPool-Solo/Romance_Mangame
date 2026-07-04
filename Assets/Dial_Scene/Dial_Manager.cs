@@ -1,0 +1,121 @@
+using JetBrains.Annotations;
+using System;
+using TMPro;
+using UnityEditor.Rendering;
+using UnityEditorInternal;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+// 게임 진행 상태
+public struct GameState
+{
+    public int char_id;
+    public int back_id;
+    public int date;
+
+    public GameState(int char_id, int back_id, int date)
+    {
+        this.char_id = char_id;
+        this.back_id = back_id;
+        this.date = date;
+    }
+}
+
+[Serializable]
+public struct CharInfo
+{
+    public int id;
+    public string name;
+    public Sprite[] imgs;
+}
+
+[Serializable]
+public struct BackInfo
+{
+    public string name;
+    public Sprite img;
+} 
+
+[Serializable]
+public struct CharDial
+{
+    public Dial[] dial_info;
+}
+
+
+public class Dial_Manager : MonoBehaviour
+{
+    [SerializeField]
+    public CharDial[] dial_info;
+
+    [SerializeField]
+    public CharInfo[] char_info;
+
+    [SerializeField]
+    public BackInfo[] back_info;
+
+    public InputAction next;
+
+    //public TextMeshProUGUI text_name;
+    //public TextMeshProUGUI text_what;
+    //public GameObject panel_button;
+
+    GameState current;
+    public Dial current_dial;
+    int dial_id;
+
+    public SceneUI_Manager SceneUI;
+
+    void Start()
+    {
+        //InitDial(new GameState(DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay));
+        InitDial(new GameState(0, 0, 0));
+    }
+
+    public void InitDial(GameState g)
+    {
+        current = g;
+        current_dial = dial_info[g.char_id].dial_info[g.date];
+        dial_id = 0;
+        MakeText(0);
+        MakeBack(g.back_id);
+
+        next.Enable();
+        next.performed += ctx=>Next();
+        if (SceneUI != null) SceneUI.SetPannelButton(false);
+    }
+
+    void MakeText(int id)
+    {
+        if (current_dial.dials.Length <= id)
+        {
+            GotoMinigame();
+            return;
+        }
+        string name = char_info[current_dial.dials[id].talker].name;
+        string text = current_dial.dials[id].text;
+        Sprite face = char_info[current_dial.dials[id].talker].imgs[current_dial.dials[id].face];
+        if(SceneUI!= null) SceneUI.MakeText(name, text, face);
+    }
+
+    void MakeBack(int id)
+    {
+        Sprite back = back_info[id].img;
+
+        if (SceneUI != null) SceneUI.MakeBack(back);
+    }
+
+    void Next()
+    {
+        dial_id++;
+        MakeText(dial_id);
+
+        //Like_Manager.instance.SetLike(0, 10);
+    }
+
+    void GotoMinigame()
+    {
+        SceneManager.LoadScene("EasyMiniGame");
+    }
+}
