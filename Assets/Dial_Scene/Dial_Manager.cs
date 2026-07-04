@@ -228,7 +228,8 @@ public class Dial_Manager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainScene");
+            //SceneManager.LoadScene("MainScene");
+            FadeManager.Instance.FadeToScene("MainScene", Color.white);
         }
 
         //Like_Manager.instance.SetLike(0, 10);
@@ -265,11 +266,11 @@ public class Dial_Manager : MonoBehaviour
     {
         if (isGood)
         {
-            SceneManager.LoadScene("EasyMiniGame");
+            FadeManager.Instance.FadeToScene("EasyMiniGame", Color.white);
         }
         else
         {
-            SceneManager.LoadScene("HardMiniGame");
+            FadeManager.Instance.FadeToScene("HardMiniGame", Color.white);
         }
     }
 
