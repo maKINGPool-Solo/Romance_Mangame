@@ -82,7 +82,7 @@ public class MainSceneClickManager : MonoBehaviour
         {
             Debug.Log("Clicked: " + character.characterId);
             DialogueData.SelectedCharacterId = character.characterId;
-            SceneManager.LoadScene("Dialogue_Scene");
+            FadeManager.Instance.FadeToScene("Dialogue_Scene", Color.white);
         }
     }
 
