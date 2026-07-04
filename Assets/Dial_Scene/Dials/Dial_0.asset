@@ -92,7 +92,7 @@ MonoBehaviour:
       text: "\"\uC9C4\uC9DC \uBABB\uB410\uC5B4, \uB108! \uB10C \uC815\uB9D0 \uB0B4
         \uCDE8\uD5A5\uC774\uB791 \uC815\uBC18\uB300\uC57C!\""
   - text: "\"\uBC14\uB2E5\uC5D0 \uBB50 \uB300\uB2E8\uD55C \uAC70\uB77C\uB3C4 \uC788\uC5B4?
-      \uB098 \uB9D0\uACE0.\" (\uD50C\uB7EC\uD305)"
+      \n\uB098 \uB9D0\uACE0.\" (\uD50C\uB7EC\uD305)"
     good:
     - talker: 0
       listener: 0
