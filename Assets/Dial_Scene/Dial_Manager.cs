@@ -86,6 +86,7 @@ public class Dial_Manager : MonoBehaviour
     //public GameObject panel_button;
 
     GameState current;
+    int event_id;
     public Dial current_dial;
     int dial_id;
     int reaction_id;
@@ -113,8 +114,12 @@ public class Dial_Manager : MonoBehaviour
     void Start()
     {
         TimeManager.Instance.isPaused = true;
+        TimeManager.Instance.timeText.enabled = false;
 
         current = new GameState(DialogueData.SelectedCharacterId, DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay);
+
+        event_id = UnityEngine.Random.Range(0, dial_info[current.char_id].dial_info.Length);
+
         isPlayed = false;
         //isPlayed = true;
 
@@ -136,12 +141,13 @@ public class Dial_Manager : MonoBehaviour
     private void OnDestroy()
     {
         TimeManager.Instance.isPaused = false;
+        TimeManager.Instance.timeText.enabled = true;
     }
 
 
     public void InitDial()
     {
-        current_dial = dial_info[current.char_id].dial_info[current.date];
+        current_dial = dial_info[current.char_id].dial_info[event_id];
         dial_id = 0;
         MakeText(0);
         MakeBack(current.back_id);
@@ -166,7 +172,7 @@ public class Dial_Manager : MonoBehaviour
         string text;
         Sprite face;
         if (current_dial.dials[id].talker == -1) name = "";
-        else name = char_info[current_reaction[id].talker].name;
+        else name = char_info[current_dial.dials[id].talker].name;
         text = current_dial.dials[id].text;
         if (current_dial.dials[id].listener == -1) face = null;
         else face = char_info[current_dial.dials[id].listener].imgs[current_dial.dials[id].face];
@@ -310,8 +316,13 @@ public class Dial_Manager : MonoBehaviour
                 {
                     AfterMinigame();
                     TimeManager.Instance.isPaused = true;
+                    TimeManager.Instance.timeText.enabled = false;
                 }
-                else TimeManager.Instance.isPaused = false;
+                else
+                {
+                    TimeManager.Instance.isPaused = false;
+                    TimeManager.Instance.timeText.enabled = true;
+                }
                 shouldKeep = true;
                 break;
             }
