@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI dayText;
 
-    public bool isPaused = false;
+    public bool isPaused = true;
 
     void Awake()
     {
