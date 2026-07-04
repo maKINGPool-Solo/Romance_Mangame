@@ -143,6 +143,8 @@ public class Dial_Manager : MonoBehaviour
     {
         TimeManager.Instance.isPaused = false;
         TimeManager.Instance.SetTimeUIVisible(true);
+        next.performed -= OnNextPerformed;
+        next.Disable();
     }
 
 
@@ -153,8 +155,10 @@ public class Dial_Manager : MonoBehaviour
         MakeText(0);
         MakeBack(current.back_id);
 
+        next.performed -= OnNextPerformed;
+        next.performed += OnNextPerformed;
         next.Enable();
-        next.performed += ctx=>Next();
+        //next.performed += ctx=>Next();
 
         if (SceneUI != null) SceneUI.SetPannelButton(false);
 
@@ -228,7 +232,8 @@ public class Dial_Manager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainScene");
+            //SceneManager.LoadScene("MainScene");
+            FadeManager.Instance.FadeToScene("MainScene", Color.white);
         }
 
         //Like_Manager.instance.SetLike(0, 10);
@@ -265,16 +270,16 @@ public class Dial_Manager : MonoBehaviour
     {
         if (isGood)
         {
-            SceneManager.LoadScene("EasyMiniGame");
+            FadeManager.Instance.FadeToScene("EasyMiniGame", Color.white);
         }
         else
         {
-            SceneManager.LoadScene("HardMiniGame");
+            FadeManager.Instance.FadeToScene("HardMiniGame", Color.white);
         }
     }
 
     void MakeAfterGame(int id)
-    {
+    { 
         string name;
         string text;
         Sprite face;
@@ -286,6 +291,9 @@ public class Dial_Manager : MonoBehaviour
 
     void AfterMinigame()
     {
+        if (SceneUI != null) SceneUI.SetPannelButton(false);
+
+        isPlayed = true;
         if (isSuccess)
         {
             if (isGood)
@@ -333,5 +341,10 @@ public class Dial_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnNextPerformed(InputAction.CallbackContext ctx)
+    {
+        Next();
     }
 }

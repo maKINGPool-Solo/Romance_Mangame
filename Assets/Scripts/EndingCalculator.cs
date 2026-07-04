@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class EndingData
 {
-    public static string ResultEndingId;
+    public static int ResultEndingId;
 }
 
 public class EndingCalculator : MonoBehaviour
@@ -22,7 +22,7 @@ public class EndingCalculator : MonoBehaviour
         if(Like_Manager.instance == null)
         {
             Debug.Log("LikeManager doesnt exist.");
-            EndingData.ResultEndingId = "Bad";
+            EndingData.ResultEndingId = 0;
             return;
         }
 
@@ -36,28 +36,34 @@ public class EndingCalculator : MonoBehaviour
         if(success_1) successCount++;
         if(success_2) successCount++;
 
-        string result;
+        int result;
 
         if(successCount == 0)
         {
-            result = "Bad";
+            result = 0;
         }else if(successCount == 3)
         {
-            result = "All_Good";
+            result = 10;
         }else if (successCount == 1)
         {
-            if (success_0) result = "Ending_0";
-            else if (success_1) result = "Ending_1";
-            else result = "Ending_2";
+            if (success_0) result = 1;
+            else if (success_1) result = 2;
+            else result = 3;
         } else
         {
-            string pair;
-            if (success_0 && success_1) pair = "01";
-            else if (success_0 && success_2) pair = "02";
-            else pair = "12";
-
             bool isGood = Random.Range(0, 2) == 0;
-            result = $"Ending_{pair}_{(isGood ? "Good" : "Bad")}";
+            if (success_0 && success_1)
+            {
+                result = isGood ? 4 : 5;
+            }
+            else if (success_0 && success_2)
+            {
+                result = isGood ? 6 : 7;
+            }
+            else
+            {
+                result = isGood ? 8 : 9;
+            }
         }
 
         EndingData.ResultEndingId = result;
