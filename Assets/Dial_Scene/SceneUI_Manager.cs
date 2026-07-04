@@ -19,11 +19,21 @@ public class SceneUI_Manager : MonoBehaviour
     private void Start()
     {
         // 씬이 시작되면 싱글톤에 자신을 등록
+
+        buttons = panel_button.GetComponentsInChildren<Button>();
+    }
+
+    private void Awake()
+    {
         if (Like_Manager.instance != null)
         {
             Like_Manager.instance.RegisterSceneUI(this);
         }
-        buttons = panel_button.GetComponentsInChildren<Button>();
+
+        if (Dial_Manager.instance != null)
+        {
+            Dial_Manager.instance.SceneUI = this;
+        }
     }
 
     private void OnDestroy()
@@ -33,6 +43,12 @@ public class SceneUI_Manager : MonoBehaviour
         {
             Like_Manager.instance.UnregisterSceneUI();
         }
+
+        if (Dial_Manager.instance != null && Dial_Manager.instance.SceneUI == this)
+        {
+            Dial_Manager.instance.SceneUI = null; 
+        }
+
     }
 
     public void MakeText(string name, string text, Sprite face)

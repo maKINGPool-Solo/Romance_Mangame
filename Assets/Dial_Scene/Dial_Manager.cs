@@ -143,6 +143,8 @@ public class Dial_Manager : MonoBehaviour
     {
         TimeManager.Instance.isPaused = false;
         TimeManager.Instance.SetTimeUIVisible(true);
+        next.performed -= OnNextPerformed;
+        next.Disable();
     }
 
 
@@ -153,8 +155,10 @@ public class Dial_Manager : MonoBehaviour
         MakeText(0);
         MakeBack(current.back_id);
 
+        next.performed -= OnNextPerformed;
+        next.performed += OnNextPerformed;
         next.Enable();
-        next.performed += ctx=>Next();
+        //next.performed += ctx=>Next();
 
         if (SceneUI != null) SceneUI.SetPannelButton(false);
 
@@ -287,6 +291,9 @@ public class Dial_Manager : MonoBehaviour
 
     void AfterMinigame()
     {
+        if (SceneUI != null) SceneUI.SetPannelButton(false);
+
+        isPlayed = true;
         if (isSuccess)
         {
             if (isGood)
@@ -334,5 +341,10 @@ public class Dial_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnNextPerformed(InputAction.CallbackContext ctx)
+    {
+        Next();
     }
 }
