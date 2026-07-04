@@ -7,6 +7,7 @@ public class TitleFadeManager : MonoBehaviour
 {
     public Image titleFadeImage;
     public float titleFadeDuration = 1f;
+    public static event System.Action OnTitleFadeInComplete;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class TitleFadeManager : MonoBehaviour
     {
         yield return StartCoroutine(Fade(1f, 0f));
         titleFadeImage.raycastTarget = false;
+        OnTitleFadeInComplete?.Invoke();
     }
 
     public void FadeToMainScene(string sceneName)

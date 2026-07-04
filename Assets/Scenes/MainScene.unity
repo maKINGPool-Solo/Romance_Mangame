@@ -385,6 +385,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_Talk
       objectReference: {fileID: 0}
+    - target: {fileID: 5343220461521845252, guid: 87cc23841f6d00a4cb15991993b844c1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
+    - target: {fileID: 5343220461521845252, guid: 87cc23841f6d00a4cb15991993b844c1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7181674906712655285, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
+    - target: {fileID: 5343220461521845252, guid: 87cc23841f6d00a4cb15991993b844c1, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5249335892604561967, guid: 87cc23841f6d00a4cb15991993b844c1, type: 3}
@@ -430,8 +442,22 @@ MonoBehaviour:
   monologuePanel: {fileID: 185672102}
   monologueText: {fileID: 185672101}
   lines:
-  - hi
-  - it's me
+  - "\uCEA0\uD37C\uC2A4\uB294 \uB298 \uADF8\uB807\uB4EF \uD65C\uAE30\uAC00 \uB118\uCE5C\uB2E4.
+    \uC624\uAC00\uB294 \uC218\uB9CE\uC740 \uC0AC\uB78C\uB4E4, \uBC14\uC058\uAC8C
+    \uD769\uC5B4\uC9C0\uB294 \uBC1C\uC18C\uB9AC\uB4E4.\n\uD558\uC9C0\uB9CC \uB0B4
+    \uC2DC\uC120\uC740 \uC5B8\uC81C\uB098 \uADF8 \uC0AC\uB78C\uD55C\uD14C \uAC00\uAC8C
+    \uB41C\uB2E4.."
+  - "\uADF8 \uC0AC\uB78C\uACFC \uAC00\uB054 \uB300\uD654\uB3C4 \uB098\uB204\uACE0,
+    \uC6C3\uACE0 \uB5A0\uB4E4\uAE30\uB3C4 \uD588\uC9C0\uB9CC \uB531 \uAC70\uAE30\uAE4C\uC9C0.
+    \uC6B0\uB9AC\uC758 \uAD00\uACC4\uB294 \uB298 '\uCE5C\uAD6C'\uB77C\uB294 \uC6B8\uD0C0\uB9AC
+    \uC548\uC5D0 \uAC07\uD600 \uC788\uC5C8\uB2E4."
+  - "'....\uC815\uB9D0 \uC774\uB807\uAC8C \uB05D\uB0BC\uAC70\uC57C?? \uC62C\uD574\uB3C4
+    \uB2E4\uC2DC \uBAA8\uC194\uB85C \uC0B4\uC544\uAC08 \uAC70\uB0D0\uACE0! '"
+  - "'\uC544\uB0D0! \uC774\uBC88\uC5D0\uC57C\uB9D0\uB85C \uB09C \uC6A9\uAE30\uB97C
+    \uB0B4\uACA0\uC5B4! \uADF8\uB798! \uD55C\uBC88 3\uC77C \uB4A4\uC5D0 \uACE0\uBC31\uD55C\uB2E4\uB294
+    \uAC01\uC624\uB85C \uB300\uD654\uB97C \uB098\uB204\uB294\uAC70\uC57C!'"
+  - "'\uC557.. \uC800\uAE30 \uBC14\uB85C \uC788\uC796\uC544..! \uAC00\uC11C \uB9D0
+    \uAC78\uC5B4\uBD10\uC57C\uACA0\uB2E4.'"
 --- !u!1 &206944703
 GameObject:
   m_ObjectHideFlags: 0
