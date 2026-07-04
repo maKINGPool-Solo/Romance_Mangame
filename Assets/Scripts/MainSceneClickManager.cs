@@ -82,7 +82,7 @@ public class MainSceneClickManager : MonoBehaviour
         {
             Debug.Log("Clicked: " + character.characterId);
             DialogueData.SelectedCharacterId = character.characterId;
-            //SceneManager.LoadScene(""); 이후 대화씬 이름 추가
+            SceneManager.LoadScene("Dialogue_Scene");
         }
     }
 
