@@ -14,6 +14,7 @@ public class Dialogue
 [Serializable]
 public class Choice
 {
+    [TextArea(1, 3)]
     public string text;
 
     [SerializeField]
