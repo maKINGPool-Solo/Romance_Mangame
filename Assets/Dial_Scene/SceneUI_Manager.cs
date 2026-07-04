@@ -13,6 +13,8 @@ public class SceneUI_Manager : MonoBehaviour
 
     public Dial_Manager dm;
 
+    Button[] buttons;
+
     private void Start()
     {
         // 씬이 시작되면 싱글톤에 자신을 등록
@@ -20,6 +22,7 @@ public class SceneUI_Manager : MonoBehaviour
         {
             Like_Manager.instance.RegisterSceneUI(this);
         }
+        buttons = panel_button.GetComponentsInChildren<Button>();
     }
 
     private void OnDestroy()
@@ -35,7 +38,15 @@ public class SceneUI_Manager : MonoBehaviour
     {
         text_name.text = name;
         text_what.text = text;
-        this.face.sprite = face;
+        if (face != null)
+        {
+            this.face.sprite = face;
+            if(this.face.enabled == false) this.face.enabled = true;
+        }
+        else
+        {
+            this.face.enabled = false;
+        }
     }
 
     public void MakeBack(Sprite back)
@@ -47,6 +58,23 @@ public class SceneUI_Manager : MonoBehaviour
     {
         slider_like.value = value;
     }
+
+    public void ShowButtons(string[] texts)
+    {
+        SetPannelButton(true);
+        int i = 0;
+        foreach(Button b in buttons)
+        {
+            if(i>= texts.Length)
+            {
+                b.gameObject.SetActive(false);
+                continue;
+            }
+            b.GetComponentInChildren<TextMeshProUGUI>().text = texts[i++];
+            b.gameObject.SetActive(true);
+        }
+    }
+
 
     public void SetPannelButton(bool enable)
     {

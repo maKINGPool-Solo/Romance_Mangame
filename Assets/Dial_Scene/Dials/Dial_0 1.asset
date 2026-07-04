@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aedb8eb5027142810577af515b913, type: 3}
+  m_Name: Dial_0 1
+  m_EditorClassIdentifier: Assembly-CSharp::Dial
+  dials:
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\u201C\uD30C\uBC15.\u201D"
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\uC544\uC8FC \uC791\uC740 \uC18C\uB9AC\uC600\uB2E4."
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\uD558\uC9C0\uB9CC \uC774\uC0C1\uD558\uAC8C\uB3C4, \uADF8 \uC21C\uAC04
+      \uC8FC\uBCC0\uC774 \uC870\uC6A9\uD574\uC9C4 \uAC83\uCC98\uB7FC \uB290\uAEF4\uC84C\uB2E4."
+  - talker: -1
+    listener: 1
+    face: 0
+    text: "\uC2DC\uC120\uC744 \uB3CC\uB9AC\uC790, \uB179\uC2A4\uAC00 \uBB34\uC5B8\uAC00\uB97C
+      \uB5A8\uC5B4\uB728\uB9B0 \uCC44 \uBC14\uB2E5\uC744 \uB354\uB4EC\uACE0 \uC788\uC5C8\uB2E4."
+  - talker: -1
+    listener: 1
+    face: 0
+    text: "\uB2E4\uAC00\uAC00\uB824\uB358 \uC21C\uAC04\u2014"
+  - talker: -1
+    listener: 1
+    face: 0
+    text: "\uD22D."
+  - talker: -1
+    listener: 1
+    face: 0
+    text: "\uC2DC\uC120\uC774 \uB9DE\uBD80\uB52A\uD78C\uB2E4."
+  choices:
+  - text: "\uC8FC\uC6CC\uC900\uB2E4."
+    good:
+    - talker: 1
+      listener: 1
+      face: 2
+      text: "\"\uB098\uC758 \uC5B4\uB460\uC774 \uC9C0\uBC30\uD558\uB294 \uC774 \uACF5\uAC04\uC5D0\uC11C,
+        \uB108\uB77C\uB294 \uBE5B\uC774 \n\uB098\uC758 \uC18C\uC911\uD55C \uBB3C\uAC74\uC744
+        \uB418\uCC3E\uC544\uC8FC\uB2E4\uB2C8.\""
+    - talker: 1
+      listener: 1
+      face: 2
+      text: "\"\u2026\uC6B4\uBA85\uC778\uAC00? \uC774 \uC21C\uAC04, \uB0B4 \uC2EC\uC7A5\uB9C8\uC800
+        \uB9AC\uB4EC\uC744 \uC783\uACE0 \n\uC694\uB3D9\uCE58\uB294\uAD70.\" "
+    bad:
+    - talker: 1
+      listener: 1
+      face: 1
+      text: "\"\uAC10\uD788 \uB098\uC758 \uACE0\uB3C5\uC744 \uBC29\uD574\uD558\uB2E4\uB2C8.
+        \uADF8 \uBB3C\uAC74\uC740 \uC2A4\uC2A4\uB85C \n\uC8FC\uC778\uC744 \uCC3E\uC544\uC57C
+        \uD558\uB294 \uC800\uC8FC\uC5D0 \uAC78\uB824 \uC788\uC5C8\uB2E4.\""
+    - talker: 1
+      listener: 1
+      face: 1
+      text: "\"\u2026\uCCC7, \uBA4D\uCCAD\uD558\uAE34. \uC190\uAE38\uC774 \uB2FF\uC558\uC73C\uB2C8
+        \uC774\uC81C \uB108\uC640 \uB098\uB294 \n\uB5C4 \uC218 \uC5C6\uB294 \uC778\uC5F0\uC774
+        \uB41C \uAC74\uAC00.\""
+  - text: "\uBC14\uB77C\uBCF4\uAE30\uB9CC \uD55C\uB2E4."
+    good:
+    - talker: 1
+      listener: 1
+      face: 2
+      text: "\"\uCE68\uBB35 \uC18D\uC758 \uB300\uD654\uC778\uAC00. \uAD73\uC774 \uC5B8\uC5B4\uB97C
+        \uC11E\uC9C0 \uC54A\uC544\uB3C4 \n\uC11C\uB85C\uC758 \uC601\uD63C\uC774 \uBD80\uB52A\uD788\uB294
+        \uC18C\uB9AC\uAC00 \uB4E4\uB9AC\uB294\uAD70.\""
+    - talker: 1
+      listener: 1
+      face: 2
+      text: "\"\u2026\uB108, \uAF64\uB098 \uACE0\uD639\uC801\uC778 \uB208\uBE5B\uC744
+        \uAC00\uC84C\uC796\uC544.\""
+    bad:
+    - talker: 1
+      listener: 1
+      face: 1
+      text: "\"\uC65C \uCE68\uBB35\uD558\uB294 \uAC70\uC9C0? \uB098\uC758 \uACE0\uD1B5\uC744
+        \uC990\uAE30\uB294 \uAC74\uAC00?\""
+    - talker: 1
+      listener: 1
+      face: 1
+      text: "\"\u2026\uADF8\uB7F0 \uD30C\uAD34\uC801\uC778 \uC2DC\uC120\uB3C4 \uB098\uC058\uC9C0
+        \uC54A\uAD70. \n\uC774 \uACE0\uC694\uD55C \uD3ED\uD48D \uC18D\uC5D0\uC11C
+        \uC7A0\uC2DC \uC228\uC744 \uC8FD\uC774\uACA0\uB2E4.\""
+  - text: "\"\uBC14\uB2E5\uC5D0 \uBB50 \uB300\uB2E8\uD55C \uAC70\uB77C\uB3C4 \uC788\uC5B4?
+      \uB098 \uB9D0\uACE0.\" (\uD50C\uB7EC\uD305)"
+    good:
+    - talker: 1
+      listener: 1
+      face: 2
+      text: "\"\uB098\uC5D0\uAC8C \uD50C\uB7EC\uD305\uC744 \uD558\uB2E4\uB2C8.. \n\uC5ED\uC2DC.
+        \uB108\uB294 \uB098\uC758 \uC5B4\uB460\uC744 \uAFF0\uB6AB\uC5B4 \uBCF4\uB294\uAD6C\uB098.
+        \n\uB098 \uB9D0\uACE0 \uB2E4\uB978 \uBB34\uC5B8\uAC00\uAC00 \uB208\uC5D0
+        \uB4E4\uC5B4\uC62C \uB9AC\uAC00 \uC5C6\uC9C0.\""
+    - talker: 1
+      listener: 1
+      face: 2
+      text: "\"\u2026\uB108, \uB0B4 \uC2EC\uC7A5\uC744 \uD6D4\uCE60 \uC148\uC778\uAC00?\""
+    bad:
+    - talker: 1
+      listener: 1
+      face: 1
+      text: " \u201C\u2026\uC800\uC9C8\uC2A4\uB7EC\uC6B4 \uB18D\uB2F4\uC774\uAD70.\""
+    - talker: 1
+      listener: 1
+      face: 1
+      text: "\"\u2026\uB098\uB97C \uB2F4\uAE30\uC5D4, \uC544\uC9C1 \uB108\uB294 \uD55C\uCC38
+        \uBA40\uC5B4.\u201D"

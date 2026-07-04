@@ -6,4 +6,7 @@ public class Dial : ScriptableObject
 {
     [SerializeField]
     public Dialogue[] dials;
+
+    [SerializeField]
+    public Choice[] choices;
 }
