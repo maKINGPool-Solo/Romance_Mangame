@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aedb8eb5027142810577af515b913, type: 3}
+  m_Name: E3
+  m_EditorClassIdentifier: Assembly-CSharp::Dial
+  dials:
+  - talker: -1
+    listener: -1
+    face: 0
+    text: "\uB179\uC2A4\uAC00 \uB098\uC5D0\uAC8C \uB2E4\uAC00\uC628\uB2E4."
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"...\uB4DC\uB514\uC5B4 \uCC3E\uC558\uAD70.\""
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"...\uB098\uC640 \uAC19\uC740 \uAE38\uC744 \uAC78\uC744 \uC790\uB97C.\""
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\uB179\uC2A4\uAC00 \uCC9C\uCC9C\uD788 \uC190\uC744 \uB0B4\uBBFC\uB2E4."
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"...\uC55E\uC73C\uB85C\uC758 \uC804\uC7A5\uC740.\""
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"...\uB458\uC774\uC11C\uB77C\uBA74 \uCDA9\uBD84\uD558\uB2E4.\""
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "<NOX END - \uAC80\uC740 \uD63C\uC790\uAC00 \uC544\uB2C8\uB2E4>"
+  choices: []
