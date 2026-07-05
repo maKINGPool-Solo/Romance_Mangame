@@ -10,6 +10,8 @@ public class CharacterInfo : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private Collider2D col;
+
     public static class DialogueData
     {
         public static string SelectedCharacterId;
@@ -19,6 +21,7 @@ public class CharacterInfo : MonoBehaviour
     {
         originalScale = transform.localScale;
         sr = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider2D>();
 
         Randomize();
     }
@@ -26,17 +29,34 @@ public class CharacterInfo : MonoBehaviour
     void OnEnable()
     {
         FadeManager.OnScreenDarkened += Randomize;
+        TimeManager.OnDayChanged += UpdateInteractable;
     }
 
     void OnDisable()
     {
         FadeManager.OnScreenDarkened -= Randomize;
+        TimeManager.OnDayChanged -= UpdateInteractable;
     }
 
     void Randomize()
     {
+        UpdateInteractable();
         PlaceRandomly();
         SetRandomPose();
+    }
+
+    void UpdateInteractable()
+    {
+        bool failed = CharacterProgress.IsFailed(characterId);
+
+        if (col != null) col.enabled = !failed;
+
+        /*if (sr != null)
+        {
+            Color c = sr.color;
+            c.a = failed ? 0.4f : 1f;
+            sr.color = c;
+        }*/
     }
 
     void PlaceRandomly()

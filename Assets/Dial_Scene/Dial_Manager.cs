@@ -322,6 +322,7 @@ public class Dial_Manager : MonoBehaviour
             MakeAfterGame(2);
             Like_Manager.instance.SetLike(current.char_id, -10);
             Debug.Log("fail");
+            CharacterProgress.MarkFailed(DialogueData.SelectedCharacterId);
         }
     }
 
@@ -335,6 +336,7 @@ public class Dial_Manager : MonoBehaviour
                 // 미니 게임 후 대화 씬 로드
                 if (scene.name == "Dialogue_Scene" && isPlayed)
                 {
+                    MakeBack(current.back_id);
                     AfterMinigame();
                     TimeManager.Instance.isPaused = true;
                     TimeManager.Instance.SetTimeUIVisible(false);
