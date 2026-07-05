@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour
 
     private Rigidbody2D rb; // Rigidbody2D를 담을 변수 추가
 
+    public bool canMove = true;
+
     void Start()
     {
         // 시작할 때 오브젝트에 달린 Rigidbody2D를 자동으로 가져옵니다.
@@ -20,6 +22,8 @@ public class PlayerScript : MonoBehaviour
 
     void Update() 
     {
+        if (!canMove) return;
+
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
 

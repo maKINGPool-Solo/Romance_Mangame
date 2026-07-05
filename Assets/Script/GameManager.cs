@@ -187,7 +187,14 @@ public class GameManager : MonoBehaviour
             // [실패] 목숨을 모두 잃어 완전히 게임 오버 되었을 때 ➔ 클리어 실패
             Debug.Log("게임 오버! 완전히 실패했습니다.");
 
-            
+            if (player != null)
+            {
+                PlayerScript ps = player.GetComponent<PlayerScript>();
+                if (ps != null) ps.canMove = false;
+                Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+                if (playerRb != null) playerRb.linearVelocity = Vector2.zero;
+            }
+
             if (Dial_Manager.instance != null)
             {
                 Dial_Manager.instance.isSuccess = false;
