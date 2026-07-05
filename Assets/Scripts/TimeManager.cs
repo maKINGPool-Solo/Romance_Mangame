@@ -21,6 +21,9 @@ public class TimeManager : MonoBehaviour
 
     public bool isPaused = true;
 
+    private bool wasPausedBeforeMenu;
+    public bool isMenuOpen = false;
+
     void Awake()
     {
         if(Instance == null)
@@ -82,5 +85,22 @@ public class TimeManager : MonoBehaviour
         {
             timerBackgroundImage.SetActive(visible);
         }
+    }
+
+    public void OpenPauseMenu()
+    {
+        if (isMenuOpen) return; // 이미 열려있으면 중복 방지
+
+        wasPausedBeforeMenu = isPaused; // 지금 상태 기억
+        isPaused = true; // 무조건 멈춤
+        isMenuOpen = true;
+    }
+
+    public void ClosePauseMenu()
+    {
+        if (!isMenuOpen) return;
+
+        isPaused = wasPausedBeforeMenu; // 원래 상태로 복원
+        isMenuOpen = false;
     }
 }
