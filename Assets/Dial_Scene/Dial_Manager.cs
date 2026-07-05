@@ -336,6 +336,7 @@ public class Dial_Manager : MonoBehaviour
                 // 미니 게임 후 대화 씬 로드
                 if (scene.name == "Dialogue_Scene" && isPlayed)
                 {
+                    next.Enable();
                     MakeBack(current.back_id);
                     AfterMinigame();
                     TimeManager.Instance.isPaused = true;
@@ -344,6 +345,7 @@ public class Dial_Manager : MonoBehaviour
                 // 미니 게임 로드
                 else if(!isPlayed)
                 {
+                    next.Disable();
                     isPlayed = true;
                     TimeManager.Instance.isPaused = false;
                     TimeManager.Instance.SetTimeUIVisible(true);
