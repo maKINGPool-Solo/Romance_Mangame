@@ -116,6 +116,7 @@ public class Dial_Manager : MonoBehaviour
     {
         TimeManager.Instance.isPaused = true;
         TimeManager.Instance.SetTimeUIVisible(false);
+        Debug.Log("Start Dial");
 
         current = new GameState(DialogueData.SelectedCharacterId, DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay);
 
@@ -141,10 +142,18 @@ public class Dial_Manager : MonoBehaviour
 
     private void OnDestroy()
     {
-        TimeManager.Instance.isPaused = false;
-        TimeManager.Instance.SetTimeUIVisible(true);
-        next.performed -= OnNextPerformed;
-        next.Disable();
+        if (instance == this)
+        {
+            TimeManager.Instance.isPaused = false;
+            TimeManager.Instance.SetTimeUIVisible(true);
+            Debug.Log("goto MainScene");
+
+            if (next != null)
+            {
+                next.performed -= OnNextPerformed;
+                next.Disable();
+            }
+        }
     }
 
 
@@ -328,11 +337,13 @@ public class Dial_Manager : MonoBehaviour
                     AfterMinigame();
                     TimeManager.Instance.isPaused = true;
                     TimeManager.Instance.SetTimeUIVisible(false);
+                    Debug.Log("AfterMinigame");
                 }
                 else
                 {
                     TimeManager.Instance.isPaused = false;
                     TimeManager.Instance.SetTimeUIVisible(true);
+                    Debug.Log("goto Minigame");
                 }
 
                 shouldKeep = true;
