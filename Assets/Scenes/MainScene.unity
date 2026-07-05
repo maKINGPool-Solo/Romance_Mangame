@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   timerBackgroundImage: {fileID: 826172182}
   currentDay: 1
-  dayDuration: 360
+  dayDuration: 150
   timeText: {fileID: 1748029677}
   dayText: {fileID: 1784746081}
   isPaused: 1
@@ -2823,7 +2823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 06:00
+  m_text: 02:30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
   m_sharedMaterial: {fileID: 7181674906712655285, guid: 18f1174c98ee1554c907c0c8dea7de4d, type: 2}
