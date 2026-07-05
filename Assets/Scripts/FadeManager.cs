@@ -79,6 +79,7 @@ public class FadeManager : MonoBehaviour
 
     IEnumerator FadeRoutine()
     {
+        fadeImage.color = new Color(0f, 0f, 0f, 0f);
         fadeImage.raycastTarget = true;
 
         yield return StartCoroutine(Fade(fadeImage, 0f, 1f, fadeDuration));
@@ -127,6 +128,7 @@ public class FadeManager : MonoBehaviour
 
     IEnumerator GameEndRoutine()
     {
+        fadeImage.color = new Color(0f, 0f, 0f, 0f);
         timerBackgroundImage.SetActive(false);
         dayBackgroundImage.SetActive(false);
 
