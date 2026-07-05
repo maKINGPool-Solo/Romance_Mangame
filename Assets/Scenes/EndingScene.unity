@@ -563,6 +563,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5e4bb01a09b098847b0024c4f98bfbb1, type: 3}
   - {fileID: 21300000, guid: 417615c8b217a0749a02392f12707da6, type: 3}
   - {fileID: 21300000, guid: 645850539b9df484bab362a0c0c349d9, type: 3}
+  ending_bgms:
+  - {fileID: 8300000, guid: 0f96c604b63747441bb823c49e11847b, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
+  - {fileID: 8300000, guid: 0f96c604b63747441bb823c49e11847b, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
+  - {fileID: 8300000, guid: 0f96c604b63747441bb823c49e11847b, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
+  - {fileID: 8300000, guid: 0f96c604b63747441bb823c49e11847b, type: 3}
+  - {fileID: 8300000, guid: e1f18480dc24b674d80908d8f4babcac, type: 3}
   next:
     m_Name: Next
     m_Type: 0
