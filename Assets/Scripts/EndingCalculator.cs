@@ -7,6 +7,22 @@ public static class EndingData
 
 public class EndingCalculator : MonoBehaviour
 {
+    public static EndingCalculator instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     void OnEnable()
     {
         TimeManager.OnGameEnd += CalculateEnding;
