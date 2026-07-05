@@ -1517,11 +1517,11 @@ PrefabInstance:
     - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
       propertyPath: 'char_info.Array.data[2].imgs.Array.data[1]'
       value: 
-      objectReference: {fileID: 21300000, guid: 64fbd736fb2d7c146bb2185cc71756a9, type: 3}
+      objectReference: {fileID: 21300000, guid: 0ea0938751166f946be76a659b194319, type: 3}
     - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
       propertyPath: 'char_info.Array.data[2].imgs.Array.data[2]'
       value: 
-      objectReference: {fileID: 21300000, guid: 0ea0938751166f946be76a659b194319, type: 3}
+      objectReference: {fileID: 21300000, guid: 64fbd736fb2d7c146bb2185cc71756a9, type: 3}
     - target: {fileID: 7588601653780964191, guid: 398845d79344fe1478c8405165b4d38f, type: 3}
       propertyPath: dial_info.Array.data[0].dial_info.Array.size
       value: 2
