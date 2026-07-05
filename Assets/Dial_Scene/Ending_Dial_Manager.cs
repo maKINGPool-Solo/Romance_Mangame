@@ -23,7 +23,8 @@ public class Ending_Dial_Manager : MonoBehaviour
 
     void Start()
     {
-        InitDial(0);
+        int ending = EndingData.ResultEndingId;
+        InitDial(ending);
     }
     public void InitDial(int id)
     {
