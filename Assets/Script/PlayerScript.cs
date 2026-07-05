@@ -10,11 +10,11 @@ public class PlayerScript : MonoBehaviour
     public float minY = -4.7f;
     public float maxY = 4.7f;
 
-    private Rigidbody2D rb; // 🟢 Rigidbody2D를 담을 변수 추가
+    private Rigidbody2D rb; // Rigidbody2D를 담을 변수 추가
 
     void Start()
     {
-        // 🟢 시작할 때 오브젝트에 달린 Rigidbody2D를 자동으로 가져옵니다.
+        // 시작할 때 오브젝트에 달린 Rigidbody2D를 자동으로 가져옵니다.
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
             GameManager.instance.StartGameAction();
         }
 
-        // 🟢 새로운 이동 로직: 방향 값을 저장할 변수
+        // 새로운 이동 로직: 방향 값을 저장할 변수
         Vector2 moveInput = Vector2.zero;
 
         // 1. 좌우 입력 체크
@@ -55,18 +55,28 @@ public class PlayerScript : MonoBehaviour
             moveInput.y = -1f;
         }
 
-        // 🟢 [핵심] 강제 좌표 대입 대신, Rigidbody2D에 속도를 주어 물리적으로 이동시킵니다!
+        UpdateFacingDirection(moveInput);
+
+        // [핵심] 강제 좌표 대입 대신, Rigidbody2D에 속도를 주어 물리적으로 이동시킵니다!
         // 이렇게 하면 물리 엔진이 벽(Collider)을 감지해서 꽉 막아줍니다.
         if (rb != null)
         {
             rb.linearVelocity = moveInput * moveSpeed;
         }
 
-        // 🌟 화면 밖 탈출 방지용 Clamp는 기존 물리와 충돌하지 않게 position으로 유지합니다.
+        // 화면 밖 탈출 방지용 Clamp는 기존 물리와 충돌하지 않게 position으로 유지합니다.
         Vector3 clampedPos = transform.position;
         clampedPos.x = Mathf.Clamp(clampedPos.x, minX, maxX);
         clampedPos.y = Mathf.Clamp(clampedPos.y, minY, maxY);
         transform.position = clampedPos;
+    }
+
+    void UpdateFacingDirection(Vector2 moveInput)
+    {
+        if (moveInput == Vector2.zero) return; // 입력 없으면 마지막 방향 유지
+
+        float angle = Mathf.Atan2(moveInput.x, -moveInput.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     void OnTriggerEnter2D(Collider2D target)
