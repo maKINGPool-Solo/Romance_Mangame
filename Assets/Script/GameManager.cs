@@ -27,12 +27,14 @@ public class GameManager : MonoBehaviour
     private bool isGameStarted = false; 
 
     [Header("--- 클리어 / 실패 결과 UI ---")]
-    public GameObject clearSuccessUI;   // 💖 성공 하트 UI
-    public GameObject clearFailUI;      // ❌ 실패 X UI
+    public GameObject clearSuccessUI;   // 성공 하트 UI
+    public GameObject clearFailUI;      // 실패 X UI
 
     [Header("--- 대사 이미지 UI 설정 ---")]
-    public GameObject dialogUI1;        // 💬 왼쪽 위 "아니 그런게 아니고.." (통이미지)
-    public GameObject dialogUI2;        // 💬 오른쪽 아래 "내가 사실은..." (통이미지)
+    public GameObject dialogUI1;        // 왼쪽 위 "아니 그런게 아니고.." (통이미지)
+    public GameObject dialogUI2;        // 오른쪽 아래 "내가 사실은..." (통이미지)
+
+    private bool isGoalReached = false;
 
     void Awake()
     {
@@ -113,15 +115,17 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(FadeOutCoroutine(dialogObj, 0.5f, true));
     }
 
-    // 🏁 플레이어가 골인 지점에 닿았을 때 체크하는 함수
+    // 플레이어가 골인 지점에 닿았을 때 체크하는 함수
     public void PlayerReachedGoal()
     {
+        if (isGoalReached) return;
+        isGoalReached = true;
         // [성공] 말풍선을 전부 다 먹고 골인했을 때 ➔ 게임 클리어 성공!
         if (collectedCoins >= totalCoins)
         {
-            Debug.Log("🎉 미션 성공!");
+            Debug.Log("미션 성공!");
             
-            // 🤝 윤민주 님 대화 매니저 연동: 성공 신호 보내기
+            // 대화 매니저 연동: 성공 신호 보내기
             if (Dial_Manager.instance != null)
             {
                 Dial_Manager.instance.isSuccess = true;
@@ -129,13 +133,13 @@ public class GameManager : MonoBehaviour
 
             if (clearSuccessUI != null) StartCoroutine(FadeInCoroutine(clearSuccessUI, 0.5f));
             
-            // 🎬 성공 UI를 1.5초간 보여준 뒤 Dialogue_Scene으로 이동
+            // 성공 UI를 1.5초간 보여준 뒤 Dialogue_Scene으로 이동
             StartCoroutine(LoadDialogueSceneAfterDelay(1.5f));
         }
         else
         {
             // 말풍선이 부족해서 탈출 실패했을 때 (단순 제자리 리셋)
-            Debug.Log("❌ 탈출 실패! 말풍선이 부족합니다.");
+            Debug.Log("탈출 실패! 말풍선이 부족합니다.");
             StartCoroutine(ClearFailSequence());
         }
     }
@@ -152,9 +156,11 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(FadeInCoroutine(clearFailUI, 0.3f));
         yield return new WaitForSecondsRealtime(0.8f);
         yield return StartCoroutine(FadeOutCoroutine(clearFailUI, 0.4f, false));
+        
+        isGoalReached = false;
     }
 
-    // 💀 플레이어가 대미지를 입거나 목숨을 잃을 때
+    // 플레이어가 대미지를 입거나 목숨을 잃을 때
     public void PlayerDied()
     {
         if (player == null) return;
@@ -179,7 +185,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // [실패] 목숨을 모두 잃어 완전히 게임 오버 되었을 때 ➔ 클리어 실패
-            Debug.Log("💀 게임 오버! 완전히 실패했습니다.");
+            Debug.Log("게임 오버! 완전히 실패했습니다.");
 
             
             if (Dial_Manager.instance != null)
@@ -193,7 +199,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ⏳ 성공 UI 연출을 잠시 보여준 뒤 대화 씬으로 넘어가는 코루틴
+    // 성공 UI 연출을 잠시 보여준 뒤 대화 씬으로 넘어가는 코루틴
     IEnumerator LoadDialogueSceneAfterDelay(float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
