@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.LightTransport;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Ending_Dial_Manager : MonoBehaviour
 {
@@ -31,14 +32,21 @@ public class Ending_Dial_Manager : MonoBehaviour
         MakeText(0);
         MakeBack(id);
 
+        next.performed -= OnNextPerformed;
+        next.performed += OnNextPerformed;
         next.Enable();
-        next.performed += ctx => Next();
+    }
+
+    void OnNextPerformed(InputAction.CallbackContext ctx)
+    {
+        Next();
     }
 
     void MakeText(int id)
     {
         if (current_dial.dials.Length <= id)
         {
+            GoToTitle();
             return;
         }
 
@@ -60,5 +68,12 @@ public class Ending_Dial_Manager : MonoBehaviour
     {
         dial_id++;
         MakeText(dial_id);
+    }
+
+    void GoToTitle()
+    {
+        next.performed -= OnNextPerformed;
+        next.Disable();
+        SceneManager.LoadScene("TitleScene");
     }
 }
