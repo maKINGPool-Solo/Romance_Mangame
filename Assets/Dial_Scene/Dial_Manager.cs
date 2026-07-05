@@ -163,6 +163,8 @@ public class Dial_Manager : MonoBehaviour
         if (SceneUI != null) SceneUI.SetPannelButton(false);
 
         reaction_id = -1;
+
+        Like_Manager.instance.SetLike(current.char_id, 0);
     }
 
     void MakeText(int id)
@@ -332,6 +334,7 @@ public class Dial_Manager : MonoBehaviour
                     TimeManager.Instance.isPaused = false;
                     TimeManager.Instance.SetTimeUIVisible(true);
                 }
+
                 shouldKeep = true;
                 break;
             }
