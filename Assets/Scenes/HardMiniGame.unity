@@ -680,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EatCoin
   bubbleID: 2
+  eatSound: {fileID: 8300000, guid: 4cd9ef20e4343ea4d860341208f701b1, type: 3}
 --- !u!1 &349384019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3485,6 +3486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EatCoin
   bubbleID: 1
+  eatSound: {fileID: 8300000, guid: 4cd9ef20e4343ea4d860341208f701b1, type: 3}
 --- !u!1 &2072965402
 GameObject:
   m_ObjectHideFlags: 0
