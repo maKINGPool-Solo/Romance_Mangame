@@ -74,11 +74,11 @@ public class EndingCalculator : MonoBehaviour
             }
             else if (success_0 && success_2)
             {
-                result = isGood ? 6 : 7;
+                result = isGood ? 8 : 9;
             }
             else
             {
-                result = isGood ? 8 : 9;
+                result = isGood ? 6 : 7;
             }
         }
 

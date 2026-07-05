@@ -75,6 +75,12 @@ public class Ending_Dial_Manager : MonoBehaviour
     {
         next.performed -= OnNextPerformed;
         next.Disable();
+        if (Like_Manager.instance != null)
+        {
+            Destroy(Like_Manager.instance.gameObject);
+            Like_Manager.instance = null;
+        }
+
         SceneManager.LoadScene("TitleScene");
     }
 }
