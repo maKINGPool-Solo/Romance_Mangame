@@ -116,7 +116,6 @@ public class Dial_Manager : MonoBehaviour
     {
         TimeManager.Instance.isPaused = true;
         TimeManager.Instance.SetTimeUIVisible(false);
-        Debug.Log("Start Dial");
 
         current = new GameState(DialogueData.SelectedCharacterId, DialogueData.SelectedCharacterId, TimeManager.Instance.currentDay);
 
@@ -146,7 +145,6 @@ public class Dial_Manager : MonoBehaviour
         {
             TimeManager.Instance.isPaused = false;
             TimeManager.Instance.SetTimeUIVisible(true);
-            Debug.Log("goto MainScene");
 
             if (next != null)
             {
@@ -174,6 +172,7 @@ public class Dial_Manager : MonoBehaviour
         reaction_id = -1;
 
         Like_Manager.instance.SetLike(current.char_id, 0);
+        Debug.Log("Start dial");
     }
 
     void MakeText(int id)
@@ -246,8 +245,6 @@ public class Dial_Manager : MonoBehaviour
             //SceneManager.LoadScene("MainScene");
             FadeManager.Instance.FadeToScene("MainScene", Color.white);
         }
-
-        //Like_Manager.instance.SetLike(0, 10);
     }
 
     void ShowButtons()
@@ -304,24 +301,27 @@ public class Dial_Manager : MonoBehaviour
     {
         if (SceneUI != null) SceneUI.SetPannelButton(false);
 
-        isPlayed = true;
+        //isPlayed = true;
         if (isSuccess)
         {
             if (isGood)
             {
                 MakeAfterGame(0);
                 Like_Manager.instance.SetLike(current.char_id, 10);
+                Debug.Log("success good");
             }
             else
             {
                 MakeAfterGame(1);
                 Like_Manager.instance.SetLike(current.char_id, 20);
+                Debug.Log("success bad");
             }
         }
         else
         {
             MakeAfterGame(2);
             Like_Manager.instance.SetLike(current.char_id, -10);
+            Debug.Log("fail");
         }
     }
 
@@ -332,18 +332,19 @@ public class Dial_Manager : MonoBehaviour
         {
             if (scene.name == sceneName)
             {
-                if (scene.name == "Dialogue_Scene")
+                // 미니 게임 후 대화 씬 로드
+                if (scene.name == "Dialogue_Scene" && isPlayed)
                 {
                     AfterMinigame();
                     TimeManager.Instance.isPaused = true;
                     TimeManager.Instance.SetTimeUIVisible(false);
-                    Debug.Log("AfterMinigame");
                 }
-                else
+                // 미니 게임 로드
+                else if(!isPlayed)
                 {
+                    isPlayed = true;
                     TimeManager.Instance.isPaused = false;
                     TimeManager.Instance.SetTimeUIVisible(true);
-                    Debug.Log("goto Minigame");
                 }
 
                 shouldKeep = true;
