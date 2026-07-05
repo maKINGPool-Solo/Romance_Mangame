@@ -325,6 +325,7 @@ public class Dial_Manager : MonoBehaviour
             {
                 if (scene.name == "Dialogue_Scene")
                 {
+                    MakeBack(current.back_id);
                     AfterMinigame();
                     TimeManager.Instance.isPaused = true;
                     TimeManager.Instance.SetTimeUIVisible(false);
