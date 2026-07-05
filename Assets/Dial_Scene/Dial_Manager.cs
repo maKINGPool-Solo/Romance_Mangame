@@ -322,6 +322,7 @@ public class Dial_Manager : MonoBehaviour
             MakeAfterGame(2);
             Like_Manager.instance.SetLike(current.char_id, -10);
             Debug.Log("fail");
+            CharacterProgress.MarkFailed(DialogueData.SelectedCharacterId);
         }
     }
 
