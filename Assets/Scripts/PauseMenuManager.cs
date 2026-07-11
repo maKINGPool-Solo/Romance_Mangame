@@ -43,6 +43,15 @@ public class PauseMenuManager : MonoBehaviour
     {
         Destroy(TimeManager.Instance.gameObject);
         Destroy(GameObject.Find("Time_UI"));
+
+        if (Like_Manager.instance != null)
+        {
+            Destroy(Like_Manager.instance.gameObject);
+            Like_Manager.instance = null;
+        }
+
+        CharacterProgress.ClearAll();
+
         SceneManager.LoadScene("TitleScene");
     }
 }

@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System;
 using System.Collections;
+using System.Net;
 using TMPro;
 //using UnityEditor.Rendering;
 //using UnityEditorInternal;
@@ -80,11 +81,6 @@ public class Dial_Manager : MonoBehaviour
     public Dialogue[] after_game;
 
     public InputAction next;
-    public static Dial_Manager instance;
-
-    //public TextMeshProUGUI text_name;
-    //public TextMeshProUGUI text_what;
-    //public GameObject panel_button;
 
     GameState current;
     int event_id;
@@ -96,21 +92,9 @@ public class Dial_Manager : MonoBehaviour
     public bool isGood;
     public bool isSuccess;
     bool isPlayed;
+    bool isLoading;
 
     public SceneUI_Manager SceneUI;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {
@@ -121,51 +105,42 @@ public class Dial_Manager : MonoBehaviour
 
         event_id = UnityEngine.Random.Range(0, dial_info[current.char_id].dial_info.Length);
 
-        isPlayed = false;
-        //isPlayed = true;
+        isPlayed = DialogueData.afterMinigame;
+        isSuccess = DialogueData.isSuccess;
+        isGood = DialogueData.isGood;
+
+
+        StartCoroutine(WaitForFade());
+
+        MakeBack(current.back_id);
 
         if (!isPlayed) InitDial();
         else AfterMinigame();
-        //InitDial(new GameState("B", "B", 0));
-    }
-
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnDestroy()
     {
-        if (instance == this)
-        {
-            TimeManager.Instance.isPaused = false;
-            TimeManager.Instance.SetTimeUIVisible(true);
+        TimeManager.Instance.isPaused = false;
+        TimeManager.Instance.SetTimeUIVisible(true);
 
-            if (next != null)
-            {
-                next.performed -= OnNextPerformed;
-                next.Disable();
-            }
-        }
+        ConnectInputAction(false);
     }
 
+    // 화면 Fade In 될 때까지 기다리기
+    IEnumerator WaitForFade()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        isLoading = false;
+
+        ConnectInputAction(true);
+    }
 
     public void InitDial()
     {
         current_dial = dial_info[current.char_id].dial_info[event_id];
         dial_id = 0;
         MakeText(0);
-        MakeBack(current.back_id);
-
-        next.performed -= OnNextPerformed;
-        next.performed += OnNextPerformed;
-        next.Enable();
-        //next.performed += ctx=>Next();
 
         if (SceneUI != null) SceneUI.SetPannelButton(false);
 
@@ -242,8 +217,8 @@ public class Dial_Manager : MonoBehaviour
         }
         else
         {
-            //SceneManager.LoadScene("MainScene");
             FadeManager.Instance.FadeToScene("MainScene", Color.white);
+            isLoading = true;
         }
     }
 
@@ -271,6 +246,7 @@ public class Dial_Manager : MonoBehaviour
         if (isGood) current_reaction = current_dial.choices[id].good;
         else current_reaction = current_dial.choices[id].bad;
 
+        DialogueData.isGood = isGood;
         InitReaction();
     }
 
@@ -279,10 +255,12 @@ public class Dial_Manager : MonoBehaviour
         if (isGood)
         {
             FadeManager.Instance.FadeToScene("EasyMiniGame", Color.white);
+            isLoading = true;
         }
         else
         {
             FadeManager.Instance.FadeToScene("HardMiniGame", Color.white);
+            isLoading = true;
         }
     }
 
@@ -301,7 +279,6 @@ public class Dial_Manager : MonoBehaviour
     {
         if (SceneUI != null) SceneUI.SetPannelButton(false);
 
-        //isPlayed = true;
         if (isSuccess)
         {
             if (isGood)
@@ -326,44 +303,24 @@ public class Dial_Manager : MonoBehaviour
         }
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void ConnectInputAction(bool isEnable)
     {
-        bool shouldKeep = false;
-        foreach (string sceneName in targetScenes)
+        if (isEnable)
         {
-            if (scene.name == sceneName)
-            {
-                // 미니 게임 후 대화 씬 로드
-                if (scene.name == "Dialogue_Scene" && isPlayed)
-                {
-                    next.Enable();
-                    MakeBack(current.back_id);
-                    AfterMinigame();
-                    TimeManager.Instance.isPaused = true;
-                    TimeManager.Instance.SetTimeUIVisible(false);
-                }
-                // 미니 게임 로드
-                else if(!isPlayed)
-                {
-                    next.Disable();
-                    isPlayed = true;
-                    TimeManager.Instance.isPaused = false;
-                    TimeManager.Instance.SetTimeUIVisible(true);
-                }
-
-                shouldKeep = true;
-                break;
-            }
+            next.performed += OnNextPerformed;
+            next.Enable();
         }
-
-        if (!shouldKeep)
+        else
         {
-            Destroy(gameObject);
+            next.performed -= OnNextPerformed;
+            next.Disable();
         }
     }
 
-    void OnNextPerformed(InputAction.CallbackContext ctx)
+    private void OnNextPerformed(InputAction.CallbackContext ctx)
     {
+        if (isLoading) return;
+
         Next();
     }
 }

@@ -12,8 +12,6 @@ public class SceneUI_Manager : MonoBehaviour
     public Slider slider_like;
     public GameObject black;
 
-    public Dial_Manager dm;
-
     Button[] buttons;
 
     private void Start()
@@ -29,11 +27,6 @@ public class SceneUI_Manager : MonoBehaviour
         {
             Like_Manager.instance.RegisterSceneUI(this);
         }
-
-        if (Dial_Manager.instance != null)
-        {
-            Dial_Manager.instance.SceneUI = this;
-        }
     }
 
     private void OnDestroy()
@@ -42,11 +35,6 @@ public class SceneUI_Manager : MonoBehaviour
         if (Like_Manager.instance != null && Like_Manager.instance.SceneUI == this)
         {
             Like_Manager.instance.UnregisterSceneUI();
-        }
-
-        if (Dial_Manager.instance != null && Dial_Manager.instance.SceneUI == this)
-        {
-            Dial_Manager.instance.SceneUI = null; 
         }
 
     }
