@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
         InitUIAlpha(damageFlashUI);
 
         if (goTextUI != null) goTextUI.SetActive(true);
+
+        DialogueData.afterMinigame = true;
     }
 
     private void InitUIAlpha(GameObject uiObj)
@@ -124,12 +126,13 @@ public class GameManager : MonoBehaviour
         if (collectedCoins >= totalCoins)
         {
             Debug.Log("미션 성공!");
-            
+
             // 대화 매니저 연동: 성공 신호 보내기
-            if (Dial_Manager.instance != null)
-            {
-                Dial_Manager.instance.isSuccess = true;
-            }
+            DialogueData.isSuccess = true;
+            //if (Dial_Manager.instance != null)
+            //{
+            //    Dial_Manager.instance.isSuccess = true;
+            //}
 
             if (clearSuccessUI != null) StartCoroutine(FadeInCoroutine(clearSuccessUI, 0.5f));
             
@@ -195,10 +198,11 @@ public class GameManager : MonoBehaviour
                 if (playerRb != null) playerRb.linearVelocity = Vector2.zero;
             }
 
-            if (Dial_Manager.instance != null)
-            {
-                Dial_Manager.instance.isSuccess = false;
-            }
+            DialogueData.isSuccess = false;
+            //if (Dial_Manager.instance != null)
+            //{
+            //    Dial_Manager.instance.isSuccess = false;
+            //}
 
 
             //SceneManager.LoadScene("Dialogue_Scene");

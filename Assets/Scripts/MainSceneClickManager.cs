@@ -84,6 +84,8 @@ public class MainSceneClickManager : MonoBehaviour
         {
             Debug.Log("Clicked: " + character.characterId);
             DialogueData.SelectedCharacterId = character.characterId;
+            DialogueData.afterMinigame = false;
+            DialogueData.isSuccess = false;
             FadeManager.Instance.FadeToScene("Dialogue_Scene", Color.white);
         }
     }

@@ -57,15 +57,18 @@ public class EndingCalculator : MonoBehaviour
         if(successCount == 0)
         {
             result = 0;
-        }else if(successCount == 3)
+        }
+        else if(successCount == 3)
         {
             result = 10;
-        }else if (successCount == 1)
+        }
+        else if (successCount == 1)
         {
             if (success_0) result = 1;
             else if (success_1) result = 2;
             else result = 3;
-        } else
+        } 
+        else
         {
             bool isGood = Random.Range(0, 2) == 0;
             if (success_0 && success_1)

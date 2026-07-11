@@ -39,21 +39,28 @@ public class Ending_Dial_Manager : MonoBehaviour
         bgmPlayer.loop = true;
         bgmPlayer.playOnAwake = false;
 
+        StartCoroutine(WaitForFade());
+
         int ending = EndingData.ResultEndingId;
         InitDial(ending);
+    }
+
+    // 화면 Fade In 될 때까지 기다리기
+    IEnumerator WaitForFade()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        ConnectInputAction(true);
     }
 
     public void InitDial(int id)
     {
         current_dial = dial_info[id];
         dial_id = 0;
+
         MakeText(0);
         MakeBack(id);
         PlayEndingBGM(id); 
-
-        next.performed -= OnNextPerformed;
-        next.performed += OnNextPerformed;
-        next.Enable();
     }
 
     // [추가] 엔딩 ID에 맞는 배경음악을 틀어주는 함수
@@ -67,11 +74,6 @@ public class Ending_Dial_Manager : MonoBehaviour
         }
     }
 
-    void OnNextPerformed(InputAction.CallbackContext ctx)
-    {
-        Next();
-    }
-
     void MakeText(int id)
     {
         if (current_dial.dials.Length <= id)
@@ -82,7 +84,7 @@ public class Ending_Dial_Manager : MonoBehaviour
 
         string name;
         string text;
-        if (current_dial.dials[id].talker == -1) name = "";
+        if (current_dial.dials[id].talker == -1) name = "나";
         else name = char_info[current_dial.dials[id].talker].name;
         text = current_dial.dials[id].text;
         if (SceneUI != null) SceneUI.MakeText(name, text);
@@ -103,14 +105,30 @@ public class Ending_Dial_Manager : MonoBehaviour
 
     void GoToTitle()
     {
-        next.performed -= OnNextPerformed;
-        next.Disable();
+        ConnectInputAction(false);
+
         if (Like_Manager.instance != null)
         {
             Destroy(Like_Manager.instance.gameObject);
             Like_Manager.instance = null;
         }
 
+        CharacterProgress.ClearAll();
+
         SceneManager.LoadScene("TitleScene");
+    }
+
+    void ConnectInputAction(bool isEnable)
+    {
+        if (isEnable)
+        {
+            next.performed += ctx => Next();
+            next.Enable();
+        }
+        else
+        {
+            next.performed -= ctx => Next();
+            next.Disable();
+        }
     }
 }
