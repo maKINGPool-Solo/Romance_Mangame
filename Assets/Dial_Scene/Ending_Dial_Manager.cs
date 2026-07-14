@@ -76,7 +76,7 @@ public class Ending_Dial_Manager : MonoBehaviour
 
     void MakeText(int id)
     {
-        if (current_dial.dials.Length <= id)
+        if (current_dial.dials == null || current_dial.dials.Length <= id)
         {
             GoToTitle();
             return;
