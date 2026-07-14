@@ -2,6 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+public static class BGM
+{
+    public static float mark;
+}
+
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance;
