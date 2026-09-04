@@ -37,26 +37,36 @@ MonoBehaviour:
     listener: 0
     face: 0
     text: '"..."'
-  - talker: 1
-    listener: 0
-    face: 0
-    text: "\"...\uC6B4\uBA85\uC774\uB780.\""
-  - talker: 1
-    listener: 0
-    face: 0
-    text: "\"...\uCC38\uC73C\uB85C \uC794\uD639\uD558\uAD70.\""
   - talker: 2
     listener: 0
     face: 0
-    text: "\"\uC88B\uC544!\""
+    text: "\"\uD48B! \uC544\uD558\uD558!\""
   - talker: 2
     listener: 0
     face: 0
-    text: "\"\uADF8\uB7FC \uC815\uC815\uB2F9\uB2F9\uD558\uAC8C \uC2B9\uBD80 \uBCF4\uC790!\""
+    text: "\"\uB098 \uC774\uAC70 \uBB34\uC2A8 \uC0C1\uD669\uC778\uC9C0 \uC54C\uC544.
+      \uC6B0\uB9AC \uB458 \uB2E4 \uACE0\uBC31\uD558\uB7EC \uC628\uAC70 \uB9DE\uC9C0?\""
   - talker: 1
     listener: 0
     face: 0
-    text: "\"...\uBC14\uB77C\uB358 \uBC14\uB2E4.\""
+    text: '"....!"'
+  - talker: 2
+    listener: 0
+    face: 0
+    text: "\"\uC0AC\uB791\uC744 \uC704\uD574 \uC2F8\uC6CC\uC57C \uB420 \uC904\uC740
+      \uBAB0\uB790\uC9C0\uB9CC \uB098, \uC81C\uBC95 \uC790\uC2E0\uC788\uAC70\uB4E0?\""
+  - talker: 2
+    listener: 0
+    face: 0
+    text: "\"\uC815\uC815\uB2F9\uB2F9\uD558\uAC8C \uC2B9\uBD80 \uBCF4\uC790 \uB179\uC2A4!\""
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"\uD6D7. \uADF8\uB807\uAC8C \uB098\uC624\uB294 \uAC83\uC778\uAC00 \uC5F0\uC544?\""
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"\uBC14\uB77C\uB294 \uBC14\uB2E4.\""
   - talker: 1
     listener: 0
     face: 0

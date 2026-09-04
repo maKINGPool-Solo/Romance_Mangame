@@ -25,10 +25,15 @@ MonoBehaviour:
     listener: 0
     face: 0
     text: "\"\uC624\uD574\uD558\uC9C0\uB294 \uB9C8.\""
+  - talker: -1
+    listener: 0
+    face: 0
+    text: "\"..\uD558\uC9C0\uB9CC \uC9C0\uB09C 3\uC77C\uC744 \uB418\uB3CC\uC544\uBD24\uC744
+      \uB54C \uB108\uB791 \uAC19\uC774 \uC788\uB358 \uC2DC\uAC04\uC740.... \uC7AC\uBC0C\uC5C8\uC5B4.\""
   - talker: 0
     listener: 0
     face: 0
-    text: "\"\uB124\uAC00 \uC88B\uC544\uC11C \uC6C3\uB294 \uAC74 \uC544\uB2C8\uAC70\uB4E0?\""
+    text: "\"\uB124..\uB124\uAC00 \uC88B\uC544\uC11C \uC6C3\uB294 \uAC74 \uC544\uB2C8\uAC70\uB4E0?\""
   - talker: 0
     listener: 0
     face: 0

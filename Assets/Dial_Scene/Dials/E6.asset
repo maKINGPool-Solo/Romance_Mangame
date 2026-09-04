@@ -28,12 +28,17 @@ MonoBehaviour:
   - talker: 1
     listener: 0
     face: 0
-    text: "\"...\uB108\uB610\uD55C \uC774 \uC0AC\uB78C\uC5D0\uAC8C \uB9C8\uC74C\uC744
-      \uC0AC\uB85C\uC7A1\uD614\uB098.\""
+    text: "\"...\uB108 \uB610\uD55C \uC774 \uC0AC\uB78C\uC5D0\uAC8C \uBB34\uC2A8
+      \uBCFC\uC77C\uB85C \uCC3E\uC544\uC654\uB098?\""
   - talker: -1
     listener: 0
     face: 0
     text: "\uC7A0\uC2DC \uC815\uC801\uC774 \uD750\uB978\uB2E4."
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\"...\uC124\uB9C8 \uD55C\uB098..!  \uB108\uB3C4 \uB9C8\uC74C\uC774 \uC774
+      \uC0AC\uB78C\uC5D0\uAC8C \uC0AC\uB85C\uC7A1\uD600\uC11C..\""
   - talker: -1
     listener: 0
     face: 0
@@ -42,11 +47,22 @@ MonoBehaviour:
   - talker: 0
     listener: 0
     face: 0
-    text: "\"..\uB0B4 \uB9C8\uC74C \uAC00\uC9C0\uACE0 \uC7A5\uB09C\uCE5C\uAC70\uAD6C\uB098..\""
+    text: "\"...\uB098\uB294 \uB108\uAC00 \uD574\uC92C\uB358 \uB2E4\uC815\uD55C \uB9D0\uACFC
+      \uAC19\uC774 \uBCF4\uB0B8 \uC2DC\uAC04\uC774 \uB108\uB3C4 \uB0A0 \uC88B\uC544\uD574\uC11C
+      \uADF8\uB7F0 \uC904 \uC54C\uC558\uB294\uB370..\""
   - talker: 0
     listener: 0
     face: 0
-    text: "\"...\uB410\uC5B4.\uB9C8\uC74C\uB300\uB85C \uD574.\""
+    text: "\"(\uB208\uBB3C\uC774 \uACE0\uC774\uBA74\uC11C)..\uB0B4 \uB9C8\uC74C \uAC00\uC9C0\uACE0
+      \uC7A5\uB09C\uCE5C\uAC70\uAD6C\uB098..\""
+  - talker: 0
+    listener: 0
+    face: 0
+    text: "\"...\uB410\uC5B4. \uB9C8\uC74C\uB300\uB85C \uD574. \uB09C \uAC08\uB798.\""
+  - talker: 0
+    listener: 0
+    face: 0
+    text: "\"...\uB179\uC2A4. \uB10C \uC5B4\uB5A1\uD560\uB798?\""
   - talker: 1
     listener: 0
     face: 0
@@ -58,6 +74,10 @@ MonoBehaviour:
     face: 0
     text: "\"\uB108\uB294 \uAC80\uC774 \uC544\uB2C8\uB77C \uAC89\uB9CC \uBC88\uC9C0\uB974\uB974\uD55C
       \uBAA8\uC870\uD488\uC774\uC5C8\uC5B4.\""
+  - talker: 1
+    listener: 0
+    face: 0
+    text: "\".....\uAC00\uC790, \uD55C\uB098."
   - talker: -1
     listener: 0
     face: 0
@@ -79,4 +99,7 @@ MonoBehaviour:
     listener: 0
     face: 0
     text: "<BAD END - \uB108 \uBE7C\uACE0 \uD654\uD574>"
-  choices: []
+  choices:
+  - text: 
+    good: []
+    bad: []
