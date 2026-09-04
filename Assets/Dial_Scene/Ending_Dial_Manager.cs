@@ -116,6 +116,7 @@ public class Ending_Dial_Manager : MonoBehaviour
         CharacterProgress.ClearAll();
 
         SceneManager.LoadScene("TitleScene");
+        BGM.mark = 0f;
     }
 
     void ConnectInputAction(bool isEnable)

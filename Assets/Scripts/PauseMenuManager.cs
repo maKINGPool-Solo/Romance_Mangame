@@ -53,5 +53,7 @@ public class PauseMenuManager : MonoBehaviour
         CharacterProgress.ClearAll();
 
         SceneManager.LoadScene("TitleScene");
+
+        BGM.mark = 0f;
     }
 }
