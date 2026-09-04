@@ -51,12 +51,14 @@ public class CharacterInfo : MonoBehaviour
 
         if (col != null) col.enabled = !failed;
 
-        /*if (sr != null)
+        if (sr != null)
         {
             Color c = sr.color;
-            c.a = failed ? 0.4f : 1f;
+            c.r = failed ? 0.4f : 1f;
+            c.g = failed ? 0.4f : 1f;
+            c.b = failed ? 0.4f : 1f;
             sr.color = c;
-        }*/
+        }
     }
 
     void PlaceRandomly()
